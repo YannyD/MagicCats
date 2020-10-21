@@ -1,9 +1,9 @@
 .canvas{
-    width: 100vw;
-    height: 200vh;
+    width: 800px;
+    height: 800px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-color: grey;
 }
 
@@ -13,11 +13,12 @@
     background-color: orange;
     border-radius: 50% 50% 20% 20%;
     z-index: 9;
+    transform: translateY(80%);
 }
 
 .ears{
     position: relative;
-transform: translateX(150%) translateY(-100%);
+transform: translateX(150%) translateY(110%);
     display: flex;
 }
 
@@ -71,6 +72,13 @@ transform: translateX(150%) translateY(-100%);
     font-family: Roboto Condensed, sans-serif;
 }
 
+.mouth{
+    position: absolute;
+    height:30px;
+    width:30px;
+    transform: translateX(153%) translateY(-82%) rotate(90deg);
+    font-size: 0.8em;
+}
 .whiskers{
     stroke: black;
     stroke-width:2;
@@ -163,7 +171,7 @@ transform: translateX(150%) translateY(-100%);
     border-bottom:15px dashed white;
     border-radius: 50%;
     position: absolute;
-    transform: translateY(95%) translateX(10%) rotate(20deg);
+    transform: translateY(140%) translateX(10%) rotate(20deg);
     z-index: 12;
 }
 .tail2{
@@ -172,14 +180,14 @@ transform: translateX(150%) translateY(-100%);
     border-bottom:15px solid orange;
     border-radius: 50%;
     position: absolute;
-    transform: translateY(95%) translateX(10%) rotate(20deg);
+    transform: translateY(140%) translateX(10%) rotate(20deg);
 }
 
 .legs{
     height: 375px;
     width: 375px;
     position: absolute;
-    transform: translateX(45%) translateY(110%);
+    transform: translateX(45%) translateY(115%);
     z-index: 13;
 }
 
