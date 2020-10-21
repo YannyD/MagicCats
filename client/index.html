@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academy kitties </title>
+  <title>Magic Cats</title>
   <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <script src="assets/bootstrap/js/popper.js"></script>
@@ -13,65 +13,86 @@
   <link rel="stylesheet" href="assets/css/colors.css">
   <link rel="stylesheet" href="assets/css/factory.css">
   <link rel="stylesheet" href="assets/css/frontend.css">
+  <link rel="stylesheet" href="cat_style.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400' rel='stylesheet' type='text/css'>
 </head>
   <body>
-    <div class="container p-5" style="margin-top: 12vh;margin-bottom: 10vh;">
+    <div class="container p-5" style="margin-top:-2vh; margin-bottom: 10vh;">
         <div align="center">
-        <h1 class="c-white">Kitties-Factory</h1>
-        <p class="c-white">Create your custom Kitty</p>
+        <h1 class="c-white">Kitties-Factory: Create your custom Kitty</h1>
     </div>
         <div class="row">
-            <div class="col-lg-4 catBox m-2 light-b-shadow">
-                <div class="cat">
-                    <div class="cat__ear">
-                        <div id="leftEar" class="cat__ear--left">
-                            <div class="cat__ear--left-inside"></div>
+            <div class="col-lg-6 catBox m-2 light-b-shadow">
+                <div class="canvas">
+                <div class="ears">
+                        <div class="left_ear">
+                            <div class="inner_left_ear"></div>
                         </div>
-                        <div id="rightEar" class="cat__ear--right">
-                            <div class="cat__ear--right-inside"></div>
+                        <div class="right_ear">
+                            <div class="inner_right_ear"></div>
+                
                         </div>
                     </div>
-
-                    <div id="head" class="cat__head">
-                        <div id="midDot" class="cat__head-dots">
-                            <div id="leftDot" class="cat__head-dots_first"></div>
-                            <div id="rightDot" class="cat__head-dots_second"></div>
+                    <div class="head">
+                        <div class="stripes">
+                            <svg height="100%" width="100%">
+                                <line x1="70" y1="10" x2="110" y2="70"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="68" y1="10" x2="108" y2="70"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="72" y1="10" x2="112" y2="70"></line>
+                            
+                                <line x1="110" y1="70" x2="47" y2="20"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="108" y1="70" x2="45" y2="20"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="112" y1="70" x2="49" y2="20"></line>
+                
+                                <line x1="145" y1="65" x2="213" y2="20"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="143" y1="65" x2="211" y2="20"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="146" y1="65" x2="214" y2="20"></line>
+                                
+                                <line x1="145" y1="65" x2="175" y2="13"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="147" y1="65" x2="177" y2="13"></line>
+                                <line style="stroke: white; stroke-width:1;" x1="143" y1="65" x2="173" y2="13"></line>
+                
+                            </svg>
                         </div>
-                        <div class="cat__eye">
-                            <div class="cat__eye--left">
-                                <span class="pupil-left"></span>
+                        <div class="eyes">
+                            <div class="leye">
+                                <div class="liris"></div>
                             </div>
-                            <div class="cat__eye--right">
-                                <span class="pupil-right"></span>
+                            <div class="reye">
+                                <div class="riris"></div>
                             </div>
                         </div>
-                        <div class="cat__nose"></div>
-
-                        <div class="cat__mouth-contour"></div>
-                        <div class="cat__mouth-left"></div>
-                        <div class="cat__mouth-right"></div>
-
-                        <div class="cat__whiskers-left"></div>
-                        <div class="cat__whiskers-right"></div>
+                        <div class="whiskers">
+                            <svg height="100%" width="100%">
+                                <line x1="10" y1="60" x2="85" y2="100"></line>  
+                                <line x1="10" y1="80" x2="85" y2="100"></line>  
+                                <line x1="10" y1="100" x2="85" y2="100"></line>  
+                                
+                                <line x1="160" y1="100" x2="235" y2="60"></line>  
+                                <line x1="160" y1="100" x2="235" y2="80"></line>  
+                                <line x1="160" y1="100" x2="235" y2="100"></line>  
+                                
+                               <!-- <line x1="475" y1="75" x2="105" y2="135"></line>  
+                                <line x1="475" y1="100" x2="105" y2="135"></line>        
+                                <line x1="475" y1="125" x2="105" y2="135"></line>        
+                                <line x1="475" y1="150" x2="105" y2="135"></line>-->
+                            </svg>
+                        </div>
+                        <div class="snout">T
+                            <div class="mouth">{</div>
+                
+                        </div>
                     </div>
-
-                    <div class="cat__body">
-
-                        <div class="cat__chest"></div>
-
-                        <div class="cat__chest_inner"></div>
-
-
-                        <div class="cat__paw-left"></div>
-                        <div class="cat__paw-left_inner"></div>
-
-
-                        <div class="cat__paw-right"></div>
-                        <div class="cat__paw-right_inner"></div>
-
-
-                        <div id="tail" class="cat__tail"></div>
+                    <div class="catbod">
+                        <div class="catbod_top"></div>
+                        <div class="catbod_bottom"></div>
                     </div>
+                    <div class="tail1"></div>
+                    <div class="tail2"></div>
+                   <div class="legs">
+                       <div class="lleg"></div>
+                       <div class="rleg"></div>
+                   </div> 
                 </div>
                 <br>
                 <div class="dnaDiv" id="catDNA">
@@ -93,7 +114,7 @@
                     </b>
                 </div>
             </div>
-            <div class="col-lg-7 cattributes m-2 light-b-shadow">
+            <div class="col-lg-5 cattributes m-2 light-b-shadow">
 
 <!-- Cat colors -->
 <div id="catColors">
