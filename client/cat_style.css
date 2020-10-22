@@ -18,23 +18,20 @@
 
 .ears{
     position: relative;
-transform: translateX(150%) translateY(110%);
+    transform: translateX(150%) translateY(110%);
     display: flex;
 }
 
 .left_ear{
     height: 100px;
     width: 60px;
-    background-color: rgba(248, 206, 128, 0.801);
     border-radius: 0 100% 0 0;
- 
     transform: translateX(-25%);
 }
 
 .right_ear{
     height: 100px;
     width: 60px;
-    background-color: rgba(248, 206, 128, 0.801);
     border-radius: 100% 0 0 0;
     transform: translateX(25%);
 }
@@ -168,7 +165,8 @@ transform: translateX(150%) translateY(110%);
 .tail1{
     height:300px;
     width: 350px;
-    border-bottom:15px dashed white;
+    border-bottom:15px dashed;
+    border-bottom-color: white;
     border-radius: 50%;
     position: absolute;
     transform: translateY(140%) translateX(10%) rotate(20deg);
@@ -177,7 +175,8 @@ transform: translateX(150%) translateY(110%);
 .tail2{
     height:300px;
     width: 350px;
-    border-bottom:15px solid orange;
+    border-bottom:15px solid;
+    border-bottom-color: orange;
     border-radius: 50%;
     position: absolute;
     transform: translateY(140%) translateX(10%) rotate(20deg);
@@ -206,4 +205,12 @@ transform: translateX(150%) translateY(110%);
     border-radius: 20% 20% 0 0;
     position: absolute;
     margin-left: 120px;
+}
+
+.belly{
+    height:185px;
+    width:155px;
+    background-color: white;
+    border-radius: 80%;
+    transform: translateX(93%) translateY(35%);
 }

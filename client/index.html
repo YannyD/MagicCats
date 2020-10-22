@@ -9,7 +9,6 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="assets/css/mystyle.css">
-  <link rel="stylesheet" href="assets/css/cats.css">
   <link rel="stylesheet" href="assets/css/colors.css">
   <link rel="stylesheet" href="assets/css/factory.css">
   <link rel="stylesheet" href="assets/css/frontend.css">
@@ -85,7 +84,9 @@
                     </div>
                     <div class="catbod">
                         <div class="catbod_top"></div>
-                        <div class="catbod_bottom"></div>
+                        <div class="catbod_bottom">
+                            <div class="belly"></div>
+                        </div>
                     </div>
                     <div class="tail1"></div>
                     <div class="tail2"></div>
@@ -99,10 +100,13 @@
                     <b>
                         DNA:
                         <!-- Colors -->
-                         <span id="dnabody"></span>
-                         <span id="dnamouth"></span>
-                         <span id="dnaeyes"></span>
-                         <span id="dnaears"></span>
+                         <span id="dnaear"></span>
+                         <span id="dnahead"></span>
+                         <span id="dnabodytop"></span>
+                         <span id="dnabodybottom"></span>
+                         <span id="dnabelly"></span>
+                         <span id="dnatailbase"></span>
+                         <span id="dnatailstripe"></span>
                         
                          <!-- Cattributes -->
                          <span id="dnashape"></span>
@@ -119,9 +123,35 @@
 <!-- Cat colors -->
 <div id="catColors">
                 <div class="form-group">
-                    <label for="formControlRange"><b>Head and body</b><span class="badge badge-dark ml-2" id="headcode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="bodycolor">
+                    <label for="formControlRange"><b>Ears</b><span class="badge badge-dark ml-2" id="earbadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="earcolor">
                 </div>
+                
+                <div class="form-group">
+                    <label for="formControlRange"><b>Head</b><span class="badge badge-dark ml-2" id="headbadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="headcolor">
+                </div>
+                <div class="form-group">
+                    <label for="formControlRange"><b>Body Top</b><span class="badge badge-dark ml-2" id="bodytopbadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="bodytopcolor">
+                </div>
+                <div class="form-group">
+                    <label for="formControlRange"><b>Body Bottom</b><span class="badge badge-dark ml-2" id="bodybottombadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="bodybottomcolor">
+                </div>
+                <div class="form-group">
+                    <label for="formControlRange"><b>Belly</b><span class="badge badge-dark ml-2" id="bellybadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="bellycolor">
+                </div>
+                <div class="form-group">
+                    <label for="formControlRange"><b>Tail Base</b><span class="badge badge-dark ml-2" id="tailbasebadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="tailbasecolor">
+                </div>
+                <div class="form-group">
+                    <label for="formControlRange"><b>Tail Base</b><span class="badge badge-dark ml-2" id="tailstripebadge"></span></label>
+                    <input type="range" min="10" max="98" class="form-control-range" id="tailstripecolor">
+                </div>
+                
             </div>
 
             </div>
@@ -135,7 +165,7 @@
 
     </div>
     <footer align="left">
-        <p>Ivan on Tech Academy Bootcamp July 2020</p>
+        <p>Ivan on Tech Academy Bootcamp October 2020</p>
     </footer>
 
   </body>
