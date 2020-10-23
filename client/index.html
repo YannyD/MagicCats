@@ -1,85 +1,90 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magic Cats</title>
-  <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <script src="assets/bootstrap/js/popper.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="assets/css/mystyle.css">
-  <link rel="stylesheet" href="assets/css/colors.css">
-  <link rel="stylesheet" href="assets/css/factory.css">
-  <link rel="stylesheet" href="assets/css/frontend.css">
-  <link rel="stylesheet" href="cat_style.css">
-<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400' rel='stylesheet' type='text/css'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Cats</title>
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/mystyle.css">
+
+    <link rel="stylesheet" href="assets/css/colors.css">
+    <link rel="stylesheet" href="assets/css/factory.css">
+    <link rel="stylesheet" href="assets/css/frontend.css">
+    <link rel="stylesheet" href="cat_style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400' rel='stylesheet' type='text/css'>
 </head>
-  <body>
+
+<body>
     <div class="container p-5" style="margin-top:-2vh; margin-bottom: 10vh;">
         <div align="center">
-        <h1 class="c-white">Kitties-Factory: Create your custom Kitty</h1>
-    </div>
+            <h1 class="c-white">Kitties-Factory: Create your custom Kitty</h1>
+        </div>
         <div class="row">
             <div class="col-lg-6 catBox m-2 light-b-shadow">
                 <div class="canvas">
-                <div class="ears">
+                    <div class="bubble bubble-bottom-left">Meooooow!</div>
+                    <div class="ears">
                         <div class="left_ear">
                             <div class="inner_left_ear"></div>
                         </div>
                         <div class="right_ear">
                             <div class="inner_right_ear"></div>
-                
+
                         </div>
                     </div>
                     <div class="head">
                         <div class="stripes">
-                            <svg height="100%" width="100%">
+                            <svg id="stripes1" height="100%" width="100%">
                                 <line x1="70" y1="10" x2="110" y2="70"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="68" y1="10" x2="108" y2="70"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="72" y1="10" x2="112" y2="70"></line>
-                            
+                            </svg>
+                            <svg id="stripes2" height="100%" width="100%">
                                 <line x1="110" y1="70" x2="47" y2="20"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="108" y1="70" x2="45" y2="20"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="112" y1="70" x2="49" y2="20"></line>
-                
+                            </svg>
+                            <svg id="stripes3" height="100%" width="100%">
                                 <line x1="145" y1="65" x2="213" y2="20"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="143" y1="65" x2="211" y2="20"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="146" y1="65" x2="214" y2="20"></line>
-                                
+                            </svg>
+                            <svg id="stripes4" height="100%" width="100%">
                                 <line x1="145" y1="65" x2="175" y2="13"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="147" y1="65" x2="177" y2="13"></line>
                                 <line style="stroke: white; stroke-width:1;" x1="143" y1="65" x2="173" y2="13"></line>
-                
                             </svg>
                         </div>
                         <div class="eyes">
                             <div class="leye">
+                                <div class="lshut">
+                                    <span></span>
+                                </div>
                                 <div class="liris"></div>
                             </div>
                             <div class="reye">
+                                <div class="rshut">
+                                    <span></span>
+                                </div>
                                 <div class="riris"></div>
                             </div>
                         </div>
                         <div class="whiskers">
                             <svg height="100%" width="100%">
-                                <line x1="10" y1="60" x2="85" y2="100"></line>  
-                                <line x1="10" y1="80" x2="85" y2="100"></line>  
-                                <line x1="10" y1="100" x2="85" y2="100"></line>  
-                                
-                                <line x1="160" y1="100" x2="235" y2="60"></line>  
-                                <line x1="160" y1="100" x2="235" y2="80"></line>  
-                                <line x1="160" y1="100" x2="235" y2="100"></line>  
-                                
-                               <!-- <line x1="475" y1="75" x2="105" y2="135"></line>  
-                                <line x1="475" y1="100" x2="105" y2="135"></line>        
-                                <line x1="475" y1="125" x2="105" y2="135"></line>        
-                                <line x1="475" y1="150" x2="105" y2="135"></line>-->
+                                <line id="whisker1" x1="10" y1="60" x2="85" y2="100"></line>
+                                <line id="whisker2" x1="10" y1="80" x2="85" y2="100"></line>
+                                <line id="whisker3" x1="10" y1="100" x2="85" y2="100"></line>
+                                <line id="whisker4" x1="160" y1="100" x2="235" y2="60"></line>
+                                <line id="whisker5" x1="160" y1="100" x2="235" y2="80"></line>
+                                <line id="whisker6" x1="160" y1="100" x2="235" y2="100"></line>
                             </svg>
                         </div>
                         <div class="snout">T
                             <div class="mouth">{</div>
-                
                         </div>
                     </div>
                     <div class="catbod">
@@ -90,76 +95,90 @@
                     </div>
                     <div class="tail1"></div>
                     <div class="tail2"></div>
-                   <div class="legs">
-                       <div class="lleg"></div>
-                       <div class="rleg"></div>
-                   </div> 
+                    <div class="legs">
+                        <div class="lleg"></div>
+                        <div class="rleg"></div>
+                    </div>
                 </div>
                 <br>
+                <!-- dna numbers listed on front end -->
                 <div class="dnaDiv" id="catDNA">
                     <b>
                         DNA:
                         <!-- Colors -->
-                         <span id="dnaear"></span>
-                         <span id="dnahead"></span>
-                         <span id="dnabodytop"></span>
-                         <span id="dnabodybottom"></span>
-                         <span id="dnabelly"></span>
-                         <span id="dnatailbase"></span>
-                         <span id="dnatailstripe"></span>
-                        
-                         <!-- Cattributes -->
-                         <span id="dnashape"></span>
-                         <span id="dnadecoration"></span>
-                         <span id="dnadecorationMid"></span>
-                         <span id="dnadecorationSides"></span>
-                         <span id="dnadanimation"></span>
-                         <span id="dnaspecial"></span>
+                        <span id="dnaear"></span>
+                        <span id="dnahead"></span>
+                        <span id="dnabodytop"></span>
+                        <span id="dnabodybottom"></span>
+                        <span id="dnabelly"></span>
+                        <span id="dnatailbase"></span>
+                        <span id="dnatailstripe"></span>
+
+                        <!-- Cattributes -->
+                        <span id="dnaface"></span>
+                        <span id="dnabooty"></span>
+                        <span id="dnadecoration"></span>
+                        <span id="dnadecorationMid"></span>
+                        <span id="dnadecorationSides"></span>
+                        <span id="dnadanimation"></span>
+                        <span id="dnaspecial"></span>
                     </b>
                 </div>
             </div>
             <div class="col-lg-5 cattributes m-2 light-b-shadow">
 
-<!-- Cat colors -->
-<div id="catColors">
-                <div class="form-group">
-                    <label for="formControlRange"><b>Ears</b><span class="badge badge-dark ml-2" id="earbadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="earcolor">
+                <!-- Cat colors -->
+                <div id="catColors">
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Ears</b><span class="badge badge-dark ml-2"
+                                id="earbadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="earcolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Head</b><span class="badge badge-dark ml-2"
+                                id="headbadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="headcolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Body Top</b><span class="badge badge-dark ml-2"
+                                id="bodytopbadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="bodytopcolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Body Bottom</b><span class="badge badge-dark ml-2"
+                                id="bodybottombadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="bodybottomcolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Belly</b><span class="badge badge-dark ml-2"
+                                id="bellybadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="bellycolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Tail Base</b><span class="badge badge-dark ml-2"
+                                id="tailbasebadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="tailbasecolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Tail Stripes</b><span class="badge badge-dark ml-2"
+                                id="tailstripebadge"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="tailstripecolor">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Face</b><span class="badge badge-dark ml-2"
+                                id="facebadge"></span></label>
+                        <input type="range" min="1" max="5" class="form-control-range" id="facecatribute">
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Cat Booty</b><span class="badge badge-dark ml-2"
+                                id="bootybadge"></span></label>
+                        <input type="range" min="1" max="5" class="form-control-range" id="bootycatribute">
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="formControlRange"><b>Head</b><span class="badge badge-dark ml-2" id="headbadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="headcolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Body Top</b><span class="badge badge-dark ml-2" id="bodytopbadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="bodytopcolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Body Bottom</b><span class="badge badge-dark ml-2" id="bodybottombadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="bodybottomcolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Belly</b><span class="badge badge-dark ml-2" id="bellybadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="bellycolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Tail Base</b><span class="badge badge-dark ml-2" id="tailbasebadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="tailbasecolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Tail Base</b><span class="badge badge-dark ml-2" id="tailstripebadge"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="tailstripecolor">
-                </div>
-                
             </div>
-
-            </div>
-
-            </div>
-            <br>
-
         </div>
+        <br>
+    </div>
 
 
 
@@ -168,9 +187,9 @@
         <p>Ivan on Tech Academy Bootcamp October 2020</p>
     </footer>
 
-  </body>
-  <script src="assets/js/colors.js"></script>
-  <script src="assets/js/catSettings.js"></script>
-  <script src="assets/js/catFactory.js"></script>
+</body>
+<script src="assets/js/colors.js"></script>
+<script src="assets/js/catSettings.js"></script>
+<script src="assets/js/catFactory.js"></script>
 
 </html>

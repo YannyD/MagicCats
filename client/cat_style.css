@@ -16,6 +16,9 @@
     transform: translateY(80%);
 }
 
+#stripes1, #stripes2, #stripes3{
+    position: absolute;
+}
 .ears{
     position: relative;
     transform: translateX(150%) translateY(110%);
@@ -53,6 +56,15 @@
     transform: translateX(58%) translateY(23%);
     position: absolute;
 }
+
+.bubble {
+    position: absolute;
+  }
+  
+.bubble-bottom-left:before {
+    position: absolute;
+  }
+  
 
 .snout{
     height: 75px;
@@ -103,6 +115,7 @@
     font-size: 1.8em;
     text-align: center;
     transform: rotate(10deg);
+    overflow: hidden;
 }
 .leye{
     background-color: rgb(253, 186, 40);
@@ -114,6 +127,39 @@
     font-size: 1.8em;
     text-align: center;
     transform: rotate(-10deg);
+    overflow: hidden;
+}
+
+.lshut{
+    width:60px;
+    height: 45px;
+    position: absolute;
+    transform: translateX(-5px) translateY(4px) rotate(45deg);
+    z-index: 99;
+}
+
+.lshut span{
+display: block;
+width: 60px;
+height: 35%;
+background: rgb(253, 186, 40);
+border-radius: 0 0 60% 60%;
+}
+
+.rshut{
+    width:60px;
+    height: 45px;
+    position: absolute;
+    transform: translateX(-5px) translateY(4px) rotate(-45deg);
+    z-index: 99;
+}
+
+.rshut span{
+display: block;
+width: 60px;
+height: 35%;
+background: rgb(253, 186, 40);
+border-radius: 0 0 60% 60%;
 }
 
 .liris{

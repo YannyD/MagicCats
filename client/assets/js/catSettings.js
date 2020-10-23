@@ -9,10 +9,10 @@ var defaultDNA = {
     "bellyColor" : 50,
     "tailBaseColor" : 50,
     "tailStripeColor" : 93,
-    //Cattributes
-    "eyesShape" : 1,
+    //Cattributes 
+    "face" : '01',
     "decorationPattern" : 1,
-    "decorationMidcolor" : 13,
+    "bootySize" : "03",
     "decorationSidescolor" : 13,
     "animation" :  1,
     "lastNum" :  1
@@ -28,7 +28,9 @@ $( document ).ready(function() {
   $('#dnatailbase').html(defaultDNA.tailBaseColor);
   $('#dnatailstripe').html(defaultDNA.tailStripeColor);
     
-//   $('#dnashape').html(defaultDNA.eyesShape)
+  $('#dnaface').html(defaultDNA.face)
+  $('#dnabooty').html(defaultDNA.bootySize)
+
 //   $('#dnadecoration').html(defaultDNA.decorationPattern)
 //   $('#dnadecorationMid').html(defaultDNA.decorationMidcolor)
 //   $('#dnadecorationSides').html(defaultDNA.decorationSidescolor)
@@ -77,9 +79,13 @@ function renderCat(dna){
 
     tailStripeColor(colors[dna.tailStripeColor],dna.tailStripeColor);
     $('#tailstripecolor').val(dna.tailStripeColor);
+
+    faceVariation(dna.face);
+
+    bootySize(dna.bootySize);
 }
 
-// Changing cat colors
+// Changing cat facts when the selection bar moves
 $('#earcolor').change(()=>{
   var colorVal = $('#earcolor').val()
   earColor(colors[colorVal],colorVal)
@@ -112,4 +118,14 @@ $('#tailbasecolor').change(()=>{
 $('#tailstripecolor').change(()=>{
   var colorVal = $('#tailstripecolor').val()
   tailStripeColor(colors[colorVal],colorVal)
+})
+
+$('#facecatribute').change(()=>{
+  var face =$('#facecatribute').val()
+  faceVariation(face)
+})
+
+$('#bootycatribute').change(()=>{
+  var booty = $('#bootycatribute').val()
+  bootySize(booty)
 })
