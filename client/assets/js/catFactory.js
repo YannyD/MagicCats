@@ -99,90 +99,6 @@ const lirisSad = {"transform":"translateX(12%) translateY(12%) rotate(45deg)", "
 const ririsSad = {"transform":"translateX(15%) translateY(14%)  rotate(-45deg)", "height":"40px","width":"40px"};
 const eyeShutSad = {"display":"block"};
 
-
-//We change the booty below
-const bootyStyle = ["skinny", "slim", "fit", "slouch", "fatty"];
-
-function bootySize(num){
-    if(num.length==1){
-        $('#dnabooty').html("0" + num)
-    }
-    else{$('#dnabooty').html(num)}
-    booty(bootyStyle[num-1]);
-    $('#bootycatribute').val(num);
-    $('#bootybadge').html(bootyStyle[num-1]);
-}
-
-function booty(style){
-    switch(style){
-        case "skinny":
-            $('.catbod_bottom').css({'transform':'translateX(46%)', 'width':'220px'});
-            $('.belly').css({"transform":"translateX(27%)"})
-            $('.tail1, .tail2').css({"transform":"translateY(140%) translateX(35%) rotate(20deg)"})
-            break
-        case "slim":
-            $('.catbod_bottom').css({'transform':'translateX(29%)', 'width':'250px'});
-            $('.belly').css({"transform":"translateX(46%)"})
-            $('.tail1, .tail2').css({"transform":"translateY(140%) translateX(28%) rotate(20deg)"})
-            break
-        case "fit":
-            $('.catbod_bottom').css({
-                "height": "300px",
-                "width": "300px",
-                "border-radius": "50% 30% 30% 50%",
-                "background-color": "rgb(170, 114, 9)",
-                "position": "absolute",
-                "transform":"translateX(15%)"});
-            $('.belly').css({           
-                "height":"185px",
-                "width":"155px",
-                "background-color": "white",
-                "border-radius": "80%",
-                "transform": "translateX(68%) translateY(35%)"})
-            $('.tail1, .tail2').css({
-                "transform": "translateY(140%) translateX(20%) rotate(20deg)"})
-            break
-        case "slouch":
-            $('.catbod_bottom').css({
-                "height": "300px",
-                "width": "350px",
-                "border-radius": "50% 30% 30% 50%",
-                "background-color": "rgb(170, 114, 9)",
-                "position": "absolute",
-            "transform":"translateX(0)"});
-            $('.belly').css({           
-                "height":"185px",
-                "width":"155px",
-                "background-color": "white",
-                "border-radius": "80%",
-                "transform": "translateX(93%) translateY(35%)"})
-            $('.tail1, .tail2').css({
-                "transform": "translateY(140%) translateX(10%) rotate(20deg)"})
-            break
-        case "fatty":
-            $('.catbod_top').css({
-                "width":"250px",
-                "transform":"translateX(38%) translateY(-33%)"
-            })
-            $('.catbod_bottom').css({
-                "height": "300px",
-                "width": "400px",
-                "border-radius": "50%",
-                "background-color": "rgb(170, 114, 9)",
-                "position": "absolute",
-                "transform":"translateX(3%)"});
-            $('.belly').css({           
-                "height":"185px",
-                "width":"155px",
-                "background-color": "white",
-                "border-radius": "80%",
-                "transform": "translateX(86%) translateY(35%)"})
-            $('.tail1, .tail2').css({
-                "transform": "translateY(140%) translateX(15%) rotate(20deg)"})
-            break
-    }
-}
-
 //this equation is run in catSettings.js when the document loads and when the bar changes
 function faceVariation(num) {
     if(num.length==1){
@@ -358,22 +274,146 @@ function moveWhiskers(style) {
     }
 }
 
+//We change the booty below
+const bootyStyle = ["skinny", "slim", "fit", "slouch", "fatty"];
 
+function bootySize(num){
+    if(num.length==1){
+        $('#dnabooty').html("0" + num)
+    }
+    else{$('#dnabooty').html(num)}
+    $('#bootycatribute').val(num);
+    $('#bootybadge').html(bootyStyle[num-1]);
+    booty(bootyStyle[num-1]);
+}
 
-function decorationVariation(num) {
-    $('#dnadecoration').html(num)
-    switch (num) {
-        case 1:
-            $('#decorationName').html('Basic')
-            normaldecoration()
+function booty(style){
+    switch(style){
+        case "skinny":
+            $('.catbod_bottom').css({'transform':'translateX(46%)', 'width':'220px'});
+            $('.belly').css({"transform":"translateX(27%)"})
+            $('.tail1, .tail2').css({"transform":"translateY(133%) translateX(40%) rotate(20deg)"})
+            if($(".wagger")[0]){
+                $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                setAnimation(2);}
+            break
+        case "slim":
+            $('.catbod_bottom').css({'transform':'translateX(29%)', 'width':'250px'});
+            $('.belly').css({"transform":"translateX(46%)"})
+            $('.tail1, .tail2').css({"transform": "translateY(128%) translateX(31%) rotate(20deg)"})
+            if($(".wagger")[0]){
+                $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                setAnimation(2);}
+            break
+        case "fit":
+            $('.catbod_bottom').css({
+                "height": "300px",
+                "width": "300px",
+                "border-radius": "50% 30% 30% 50%",
+                "background-color": "rgb(170, 114, 9)",
+                "position": "absolute",
+                "transform":"translateX(15%)"});
+            $('.belly').css({           
+                "height":"185px",
+                "width":"155px",
+                "background-color": "white",
+                "border-radius": "80%",
+                "transform": "translateX(68%) translateY(35%)"})
+            $('.tail1, .tail2').css({
+                "transform": "translateY(128%) translateX(25%) rotate(20deg)"})
+                if($(".wagger")[0]){
+                    $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                    setAnimation(2);}
+            break
+        case "slouch":
+            $('.catbod_bottom').css({
+                "height": "300px",
+                "width": "350px",
+                "border-radius": "50% 30% 30% 50%",
+                "background-color": "rgb(170, 114, 9)",
+                "position": "absolute",
+            "transform":"translateX(0)"});
+            $('.belly').css({           
+                "height":"185px",
+                "width":"155px",
+                "background-color": "white",
+                "border-radius": "80%",
+                "transform": "translateX(93%) translateY(35%)"})
+            $('.tail1, .tail2').css({
+                "transform": "translateY(125%) translateX(10%) rotate(20deg)"})
+                if($(".wagger")[0]){
+                    $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                    setAnimation(2);}
+            break
+        case "fatty":
+            $('.catbod_top').css({
+                "width":"250px",
+                "transform":"translateX(38%) translateY(-33%)"
+            })
+            $('.catbod_bottom').css({
+                "height": "300px",
+                "width": "400px",
+                "border-radius": "50%",
+                "background-color": "rgb(170, 114, 9)",
+                "position": "absolute",
+                "transform":"translateX(3%)"});
+            $('.belly').css({           
+                "height":"185px",
+                "width":"155px",
+                "background-color": "white",
+                "border-radius": "80%",
+                "transform": "translateX(86%) translateY(35%)"})
+            $('.tail1, .tail2').css({
+                "transform": "translateY(125%) translateX(15%) rotate(20deg)"})
+                if($(".wagger")[0]){
+                    $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                    setAnimation(2);}
             break
     }
 }
 
-async function normaldecoration() {
-    //Remove all style from other decorations
-    //In this way we can also use normalDecoration() to reset the decoration style
-    $('.cat__head-dots').css({ "transform": "rotate(0deg)", "height": "48px", "width": "14px", "top": "1px", "border-radius": "0 0 50% 50%" })
-    $('.cat__head-dots_first').css({ "transform": "rotate(0deg)", "height": "35px", "width": "14px", "top": "1px", "border-radius": "50% 0 50% 50%" })
-    $('.cat__head-dots_second').css({ "transform": "rotate(0deg)", "height": "35px", "width": "14px", "top": "1px", "border-radius": "0 50% 50% 50%" })
+
+const animations = ["none", "tailShake", "headTilt",]
+
+function setAnimation(num){
+    if(num.length==1){
+        $('#dnaanimation').html("0" + num)
+    }
+    else{$('#dnaanimation').html(num)}
+    animate(animations[num-1]);
+    $('#animationid').val(num);
+    $('#animationbadge').html(animations[num-1]);
 }
+
+function animate(style){
+    switch(style){
+        case "none":
+            $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+            $('.head').removeClass("tiltingHead");
+            break
+        case "tailShake":
+            if($('#bootycatribute').val() ==1){
+                $('.tail1, .tail2').addClass("skinnyWaggingTail wagger");
+            } 
+            else if($('#bootycatribute').val() ==2){
+                $('.tail1, .tail2').addClass("slimWaggingTail wagger");
+            } 
+            else if($('#bootycatribute').val() ==3){
+                $('.tail1, .tail2').addClass("waggingTail wagger");
+            } 
+            else if($('#bootycatribute').val() ==4){
+                $('.tail1, .tail2').addClass("slouchWaggingTail wagger");
+            } 
+            else if($('#bootycatribute').val() ==5){
+                console.log($('#bootycatribute').val());
+                $('.tail1, .tail2').addClass("fattyWaggingTail wagger");
+            }        
+            $('.head').removeClass("tiltingHead");
+            break
+        case "headTilt":
+        $('.head').addClass("tiltingHead");    
+        $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+        break
+    }
+}
+

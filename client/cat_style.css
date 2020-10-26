@@ -215,7 +215,8 @@ border-radius: 0 0 60% 60%;
     border-bottom-color: white;
     border-radius: 50%;
     position: absolute;
-    transform: translateY(140%) translateX(10%) rotate(20deg);
+    transform-origin: 0 50%;
+
     z-index: 12;
 }
 .tail2{
@@ -225,7 +226,8 @@ border-radius: 0 0 60% 60%;
     border-bottom-color: orange;
     border-radius: 50%;
     position: absolute;
-    transform: translateY(140%) translateX(10%) rotate(20deg);
+    transform-origin: 0 50%;
+
 }
 
 .legs{
@@ -259,4 +261,152 @@ border-radius: 0 0 60% 60%;
     background-color: white;
     border-radius: 80%;
     transform: translateX(93%) translateY(35%);
+}
+.tailWag{
+    transform:rotate(0);
+}
+
+.tiltingHead{
+    animation: movehead 3s infinite;
+}
+
+@keyframes movehead{
+    0% {
+        transform: translateY(80%) rotate(5deg);
+    }
+
+    33% {
+        transform: translateY(80%) rotate(0deg)
+    }
+
+    66% {
+        transform: translateY(80%) rotate(-5deg) 
+    }
+
+    100% {
+        transform: translateY(80%) rotate(0)
+    }
+}
+
+.fattyWaggingTail{
+    animation: fatWagTail 3s infinite;
+}
+
+@keyframes fatWagTail{
+    0%{
+        transform: translateY(125%) translateX(15%) rotate(20deg)
+    }
+    25%{
+        transform: translateY(125%) translateX(15%) rotate(15deg)
+    }
+    50%{
+        transform: translateY(125%) translateX(15%) rotate(20deg)
+    }
+    75%{
+    transform: translateY(125%) translateX(15%) rotate(25deg)
+    }
+    100%{
+        transform: translateY(125%) translateX(15%) rotate(20deg)
+    }
+
+}
+
+.slouchWaggingTail{
+    animation: slouchWagTail 3s infinite;
+}
+
+@keyframes slouchWagTail{
+    0%{
+        transform: translateY(125%) translateX(10%) rotate(20deg)
+    }
+    25%{
+        transform: translateY(125%) translateX(10%) rotate(15deg)
+    }
+    50%{
+        transform: translateY(125%) translateX(10%) rotate(20deg)
+    }
+    75%{
+    transform: translateY(125%) translateX(10%) rotate(25deg)
+    }
+    100%{
+        transform: translateY(125%) translateX(10%) rotate(20deg)
+    }
+
+}
+
+.slimWaggingTail{
+    animation: slimWagTail 3s infinite;
+}
+
+@keyframes slimWagTail{
+    0%{
+        transform: translateY(128%) translateX(31%) rotate(20deg)
+    }
+    25%{
+        transform: translateY(128%) translateX(31%) rotate(15deg)
+    }
+    50%{
+        transform: translateY(128%) translateX(31%) rotate(20deg)
+    }
+    75%{
+    transform: translateY(128%) translateX(31%) rotate(25deg)
+    }
+    100%{
+        transform: translateY(128%) translateX(31%) rotate(20deg)
+    }
+
+}
+
+.skinnyWaggingTail{
+    animation: skinnyWagTail 3s infinite;
+}
+
+@keyframes skinnyWagTail{
+    0%{
+        transform: translateY(133%) translateX(40%) rotate(20deg)
+    }
+    25%{
+        transform: translateY(133%) translateX(40%) rotate(15deg)
+    }
+    50%{
+        transform: translateY(133%) translateX(40%) rotate(20deg)
+    }
+    75%{
+    transform: translateY(133%) translateX(40%) rotate(25deg)
+    }
+    100%{
+        transform: translateY(133%) translateX(40%) rotate(20deg)
+    }
+
+}
+
+.waggingTail{
+    animation: wagTail 3s infinite;
+}
+
+@keyframes wagTail{
+    0%{
+        transform: translateY(128%) translateX(25%) rotate(20deg)
+    }
+    25%{
+        transform: translateY(128%) translateX(25%) rotate(15deg)
+    }
+    50%{
+        transform: translateY(128%) translateX(25%) rotate(20deg)
+    }
+    75%{
+    transform: translateY(128%) translateX(25%) rotate(25deg)
+    }
+    100%{
+        transform: translateY(128%) translateX(25%) rotate(20deg)
+    }
+}
+
+.bottom_buttons{
+    position: absolute;
+    display: flex;
+    bottom: 10%;
+}
+.kittyButton{
+    margin: 5%;
 }

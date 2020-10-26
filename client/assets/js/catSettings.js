@@ -9,35 +9,27 @@ var defaultDNA = {
     "bellyColor" : 50,
     "tailBaseColor" : 50,
     "tailStripeColor" : 93,
-    //Cattributes 
     "face" : '01',
-    "decorationPattern" : 1,
     "bootySize" : "03",
-    "decorationSidescolor" : 13,
-    "animation" :  1,
-    "lastNum" :  1
+    "animate" :  1,
     }
 
 // when page load
 $( document ).ready(function() {
-  $('#dnaear').html(defaultDNA.earColor);
-  $('#dnahead').html(defaultDNA.headColor);
-  $('#dnabodytop').html(defaultDNA.bodyTopColor);
-  $('#dnabodybottom').html(defaultDNA.bodyBottomColor);
-  $('#dnabelly').html(defaultDNA.bellyColor);
-  $('#dnatailbase').html(defaultDNA.tailBaseColor);
-  $('#dnatailstripe').html(defaultDNA.tailStripeColor);
+$('#dnaear').html(defaultDNA.earColor);
+$('#dnahead').html(defaultDNA.headColor);
+$('#dnabodytop').html(defaultDNA.bodyTopColor);
+$('#dnabodybottom').html(defaultDNA.bodyBottomColor);
+$('#dnabelly').html(defaultDNA.bellyColor);
+$('#dnatailbase').html(defaultDNA.tailBaseColor);
+$('#dnatailstripe').html(defaultDNA.tailStripeColor);
     
-  $('#dnaface').html(defaultDNA.face)
-  $('#dnabooty').html(defaultDNA.bootySize)
+$('#dnaface').html(defaultDNA.face)
+$('#dnabooty').html(defaultDNA.bootySize)
 
-//   $('#dnadecoration').html(defaultDNA.decorationPattern)
-//   $('#dnadecorationMid').html(defaultDNA.decorationMidcolor)
-//   $('#dnadecorationSides').html(defaultDNA.decorationSidescolor)
-//   $('#dnaanimation').html(defaultDNA.animation)
-//   $('#dnaspecial').html(defaultDNA.lastNum)
+$('#dnaanimation').html(defaultDNA.animation)
 
-  renderCat(defaultDNA);
+renderCat(defaultDNA);
 });
 
 function getDna(){
@@ -49,11 +41,9 @@ function getDna(){
     dna += $('#dnabelly').html()
     dna += $('#dnatailbase').html()
     dna += $('#dnatailstripe').html()
-    dna += $('#dnadecoration').html()
-    dna += $('#dnadecorationMid').html()
-    dna += $('#dnadecorationSides').html()
+    dna += $('#dnaface').html()
+    dna += $('#dnabooty').html()
     dna += $('#dnaanimation').html()
-    dna += $('#dnaspecial').html()
 
     return parseInt(dna)
 }
@@ -83,6 +73,8 @@ function renderCat(dna){
     faceVariation(dna.face);
 
     bootySize(dna.bootySize);
+
+    setAnimation(dna.animate);
 }
 
 // Changing cat facts when the selection bar moves
@@ -128,4 +120,31 @@ $('#facecatribute').change(()=>{
 $('#bootycatribute').change(()=>{
   var booty = $('#bootycatribute').val()
   bootySize(booty)
+})
+
+$('#animationid').change(()=>{
+  var animation = $('#animationid').val()
+  setAnimation(animation)
+})
+
+$('#default_button').click(()=>{
+  renderCat(defaultDNA);
+})
+
+$('#random_button').click(()=>{
+
+  var randomDNA = {
+    "earColor": Math.round(Math.random()*92)+10,
+    "headColor" : Math.round(Math.random()*92)+10,
+    "bodyTopColor" : Math.round(Math.random()*92)+10,
+    "bodyBottomColor" : Math.round(Math.random()*92)+10,
+    "bellyColor" : Math.round(Math.random()*92)+10,
+    "tailBaseColor" : Math.round(Math.random()*92)+10,
+    "tailStripeColor" : Math.round(Math.random()*92)+10,
+    "face" : String(Math.round(Math.random()*5) + 1),
+    "bootySize" : String(Math.round(Math.random()*5) + 1),
+    "animate" :  String(Math.round(Math.random()*3) + 1),
+    }
+
+  renderCat(randomDNA);
 })
