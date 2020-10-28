@@ -43,6 +43,7 @@ mapping(uint256 =>address) private _tokenOwner; //is this unnecessary?
     }
 
     function ownerOf(uint256 tokenId) external view returns (address owner){
+        require(arrayContains(tokenIds, tokenId), "This token does not exist");
         owner = _tokenOwner[tokenId];
         return owner;
     }
@@ -69,6 +70,8 @@ mapping(uint256 =>address) private _tokenOwner; //is this unnecessary?
     }
 
     function transfer(address to, uint256 tokenId) external{
+        require(to != 0, "Don't send your token into the endless abyss");
+        require(to != address(this), "Don't send your token to this address");
         require(arrayContains(_owners[msg.sender], tokenId)==true, "Sender does not own tokenId");
         uint256 index = valueArrayIndex(_owners[msg.sender], tokenId);
         delete _owners[msg.sender][index];
