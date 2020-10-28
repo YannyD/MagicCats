@@ -70,7 +70,7 @@ mapping(uint256 =>address) private _tokenOwner; //is this unnecessary?
     }
 
     function transfer(address to, uint256 tokenId) external{
-        require(to != 0, "Don't send your token into the endless abyss");
+        require(to != address(0), "Don't send your token into the endless abyss");
         require(to != address(this), "Don't send your token to this address");
         require(arrayContains(_owners[msg.sender], tokenId)==true, "Sender does not own tokenId");
         uint256 index = valueArrayIndex(_owners[msg.sender], tokenId);
