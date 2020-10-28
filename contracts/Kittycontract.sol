@@ -8,15 +8,17 @@ contract Kittycontract is IERC721, Ownable{
 event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
 event Birth(address owner, uint256 kittenId, uint256 momId, uint256 dadId, uint256 genes);
 
+//is there benefit of 256 instead of a smaller 16?
+uint16 private constant gen0Limit = 10;
 string private constant _name= "Kitty Coin";
 string private constant _symbol = "KTC";
 
 struct Kitty{
     uint256 genes;
-    uint64 birthTime;
-    uint32 dadID;
-    uint32 momID;
-    uint16 generation;
+    uint256 birthTime;
+    uint256 dadID;
+    uint256 momID;
+    uint256 generation;
 }
 
 Kitty[] kitties;
@@ -25,12 +27,35 @@ mapping(address=>uint256[]) private _owners;    //is this a wallet that wouldn't
 mapping(uint256 =>address) private _tokenOwner; //is this unnecessary?
 
 
+uint16 public gen0Counter;
 
-//function createKittyGen0(uint256 genes) public onlyOwner{
- //   _createKitty();
+function createKittyGen0(uint256 _genes) public onlyOwner returns(uint256){
+   require(gen0Counter<gen0Limit, "The garden of eden has closed");
+   gen0Counter ++;
+   
+   return _createKitty(0, 0, 0, _genes, msg.sender);
+}
 
-//}
-function _createKitty(uint256 _momID, uint256 _dadID, uint256 _generation, uint256 _genes, address _owner) public returns(uint256){
+function getKitty(uint256 tokenId) public view returns(
+    uint256 genes, 
+    uint256 birthTime, 
+    uint256 dadID, 
+    uint256 momID, 
+    uint256 generation,
+    address owner){
+   
+    genes = kitties[tokenId].genes;
+    birthTime = kitties[tokenId].birthTime;
+    dadID = kitties[tokenId].dadID;
+    momID = kitties[tokenId].momID;
+    generation = kitties[tokenId].generation;
+    owner = _tokenOwner[tokenId];
+    
+
+}
+
+function _createKitty(uint256 _momID, uint256 _dadID, uint256 _generation, uint256 _genes, address _owner) public 
+returns(uint256){
     Kitty memory _kitty = Kitty({
         genes: _genes, 
         birthTime: uint64(now),
