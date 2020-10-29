@@ -12,7 +12,6 @@ $(document).ready(function(){
         user = accounts[0];
 
         console.log(instance);
-         Birth(address owner, uint256 kittenId, uint256 momId, uint256 dadId, uint256 genes);
 
         instance.events.Birth().on('data', function(event){
             console.log(event);
@@ -21,6 +20,14 @@ $(document).ready(function(){
             let momId = event.returnValues.momId;
             let dadId = event.returnValues.dadId;
             let genes = event.returnValues.genes;
+            $('#creationEvent').css("display", "block");
+            $('#creationEvent').text("owner: "+ owner 
+                                    + " Kitten ID: " + kittenId
+                                    +" Mom ID: " + momId
+                                    +" Dad ID: "+ dadId
+                                    +" Genes: "+genes)
         }
-    })
+    )
+    .on('error', console.error);
+})
 })
