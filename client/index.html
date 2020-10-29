@@ -11,6 +11,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="assets/js/web3.min.js" ></script>
+    <script src="./index.js" ></script>
+    <script src="./abi.js" ></script>
+
+    <!--Do we need the integrity/ crossorigin stuff in the script?-->
+
+
     <link rel="stylesheet" href="assets/css/mystyle.css">
     <!-- <link rel="stylesheet" href="assets/css/animation.css"> -->
     <link rel="stylesheet" href="assets/css/colors.css">
@@ -119,11 +126,7 @@
                         <!-- Cattributes -->
                         <span id="dnaface"></span>
                         <span id="dnabooty"></span>
-                        <span id="dnadecoration"></span>
-                        <span id="dnadecorationMid"></span>
-                        <span id="dnadecorationSides"></span>
-                        <span id="dnadanimation"></span>
-                        <span id="dnaspecial"></span>
+                
                     </b>
                 </div>
             </div>
@@ -205,7 +208,7 @@
                 <div class="bottom_buttons">
                 <button type="button" id = "default_button" class="btn btn-primary kittyButton">Default</button>
                 <button type="button" id = "random_button" class="btn btn-primary kittyButton">Random</button>
-                <button type="button" class="btn btn-primary kittyButton">Third</button>
+                <button type="button" onclick="kittyCreation()" id= "create_button" class="btn btn-primary kittyButton">Create Kitty</button>
                 </div>
 
 
@@ -219,6 +222,7 @@
     </footer>
 
 </body>
+<script src="./index.js" ></script>
 <script src="assets/js/colors.js"></script>
 <script src="assets/js/catSettings.js"></script>
 <script src="assets/js/catFactory.js"></script>

@@ -54,6 +54,7 @@ function getKitty(uint256 tokenId) public view returns(
 
 }
 
+//should this be internal?
 function _createKitty(uint256 _momID, uint256 _dadID, uint256 _generation, uint256 _genes, address _owner) public 
 returns(uint256){
     Kitty memory _kitty = Kitty({

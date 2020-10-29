@@ -26,27 +26,10 @@ $('#dnatailstripe').html(defaultDNA.tailStripeColor);
     
 $('#dnaface').html(defaultDNA.face)
 $('#dnabooty').html(defaultDNA.bootySize)
-
 $('#dnaanimation').html(defaultDNA.animation)
 
 renderCat(defaultDNA);
 });
-
-function getDna(){
-    var dna = ''
-    dna += $('#dnaear').html()
-    dna += $('#dnahead').html()
-    dna += $('#dnabodytop').html()
-    dna += $('#dnabodybottom').html()
-    dna += $('#dnabelly').html()
-    dna += $('#dnatailbase').html()
-    dna += $('#dnatailstripe').html()
-    dna += $('#dnaface').html()
-    dna += $('#dnabooty').html()
-    dna += $('#dnaanimation').html()
-
-    return parseInt(dna)
-}
 
 function renderCat(dna){
     earColor(colors[dna.earColor], dna.earColor);
@@ -148,3 +131,39 @@ $('#random_button').click(()=>{
 
   renderCat(randomDNA);
 })
+
+//Kitty creation link to web3
+
+function getDna(){
+  var dna = ''
+  dna += $('#dnaear').html()
+  console.log("the type of ear dna is " + typeof($('#dnaear').html()))
+  dna += $('#dnahead').html()
+  dna += $('#dnabodytop').html()
+  dna += $('#dnabodybottom').html()
+  dna += $('#dnabelly').html()
+  dna += $('#dnatailbase').html()
+  dna += $('#dnatailstripe').html()
+  dna += $('#dnaface').html()
+  console.log("DNA Face: " + $('#dnaface').html()+ " is a " + typeof($('#dnaface').html()))
+  console.log("after face is added the DNA is " + dna);
+  dna += $('#dnabooty').html()
+  console.log("DNA Booty: " + $('#dnabooty').html()+ " is a " + typeof($('#dnabooty').html()))
+  console.log("after booty is added the DNA is " + dna + " and the type is " + typeof(dna));
+  var parsedDna = parseInt(dna);
+  console.log("the parsed dna is " + parsedDna + " and the type is " + typeof(parsedDna));
+  return parsedDna
+}
+
+//is this an async?  
+//and does it go here or in the index.js file?  Does it matter as long as we use onclick?
+async function kittyCreation(){
+  let dna = getDna();
+  instance.methods.createKittyGen0(dna).send({}, function(error, txHash){
+    if(error) console.log(error)
+    else {
+      console.log(txHash);
+      alert("You birthed a new kitty!");
+    }
+  })
+}

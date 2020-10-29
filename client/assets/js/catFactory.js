@@ -103,6 +103,7 @@ const eyeShutSad = {"display":"block"};
 function faceVariation(num) {
     if(num.length==1){
         $('#dnaface').html("0" + num)
+        
     }
     else{$('#dnaface').html(num)}  //this sets the dna number
     face(faceStyles[num - 1]); //this changes the face according to the equations below
