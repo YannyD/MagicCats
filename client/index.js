@@ -1,7 +1,7 @@
 let web3 = new Web3(Web3.givenProvider);        //argument should be ethereum node url, but we use meta mask
 let instance;
 let user;
-let contractAddress = "0xfbeB531aB9Fb14F09EdF203bD11B4FcaA7184fcB";
+let contractAddress = "0xDa30F085236E292fe2FdF095f95d8Da0037467eC";
 
 $(document).ready(function(){
   //ask user to enable metamask and then call a function with metamask accounts
