@@ -20,15 +20,16 @@ contract Kittycontract is IERC721, Ownable{
     uint256 generation;
     }
     
-    Kitty[] public kitties;    //is this set as private by default?
+    Kitty[] public kitties;    //is this set as private by default if I don't use public?
 
     mapping(address=>uint256) private _ownersTokenBalance;    //each address's token balance
     mapping(uint256 =>address) private _tokenOwner; //tokenID equal to the number of tokens when kitty created maps to each owner
 
+
     function createKittyGen0(uint256 _genes) public onlyOwner returns(uint256){
-   require(gen0Counter<gen0Limit, "The garden of eden has closed");
-   gen0Counter ++;
-   return _createKitty(0, 0, 0, _genes, msg.sender);
+    require(gen0Counter<gen0Limit, "The garden of eden has closed");
+    gen0Counter ++;
+    return _createKitty(0, 0, 0, _genes, msg.sender);
     }
 
     function _createKitty(uint256 _momID, uint256 _dadID, uint256 _generation, uint256 _genes, address _owner) internal 
@@ -42,7 +43,7 @@ contract Kittycontract is IERC721, Ownable{
     });
 
     kitties.push(_kitty); 
-    uint256 newKittenId = kitties.length;
+    uint256 newKittenId = kitties.length-1;
     emit Birth(_owner, newKittenId, _momID, _dadID, _genes);
     _transfer(address(0), _owner, newKittenId);
 
@@ -70,8 +71,18 @@ contract Kittycontract is IERC721, Ownable{
             }
     }
 
-    function getOwnedIds(address owner) public view returns(uint256){
-    return _ownersTokenBalance[owner];
+    function getOwnedIds(address owner) public view returns(uint256[] memory){
+        //do I need this internal balanceOf?
+        uint256 arrayLength = _balanceOf(owner);
+        uint[] memory c = new uint[](arrayLength);
+        uint256 cIndex = 0;
+            for(uint256 i = 0; i<kitties.length; i++){
+                if(_tokenOwner[i]==owner){
+                c[cIndex]= i;
+                cIndex++;
+                }
+            }
+        return c;
     }
 
     function getKitty(uint256 tokenId) public view returns(
@@ -90,6 +101,9 @@ contract Kittycontract is IERC721, Ownable{
     owner = _tokenOwner[tokenId];
     }
 
+    function _balanceOf(address owner) internal view returns (uint256 balance){
+        balance = _ownersTokenBalance[owner];
+    }
     function balanceOf(address owner) external view returns (uint256 balance){
         balance = _ownersTokenBalance[owner];
     }

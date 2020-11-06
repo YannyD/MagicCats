@@ -145,6 +145,7 @@ function getDna(){
   dna += $('#dnatailstripe').html()
   dna += $('#dnaface').html()
   dna += $('#dnabooty').html()
+  console.log(dna + " is a " + typeof(dna))
   return dna
 }
 
@@ -159,4 +160,14 @@ function kittyCreation(){
       alert("You birthed a new kitty!");
     }
   })
+}
+
+function getMyCats(addy){  
+  let catList = instance.methods.getOwnedIds(addy).call({from: addy})
+  .then(function(result){
+    console.log(result);
+  })
+  
+  console.log(catList);
+
 }

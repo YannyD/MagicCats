@@ -210,9 +210,9 @@ var abi = [
     "name": "getOwnedIds",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint256[]",
         "name": "",
-        "type": "uint256"
+        "type": "uint256[]"
       }
     ],
     "payable": false,

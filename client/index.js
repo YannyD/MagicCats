@@ -1,16 +1,17 @@
-let web3 = new Web3(Web3.givenProvider);        //argument should be ethereum node url, but we use meta mask
-let instance;
-let user;
-let contractAddress = "0xDa30F085236E292fe2FdF095f95d8Da0037467eC";
+var web3 = new Web3(Web3.givenProvider);        //argument should be ethereum node url, but we use meta mask
+var instance;
+var user;
+var contractAddress = "0x039579C344e0947f9E2cBe9Cdf0FF756Db0C98E7";
+
+function creationCutOff(){
+  $('#creationEvent').css("display", "none");
+}
 
 $(document).ready(function(){
   //ask user to enable metamask and then call a function with metamask accounts
     window.ethereum.enable().then(function(accounts){
         instance = new web3.eth.Contract(abi, contractAddress, {from: accounts[0]})
         user = accounts[0];
-
-        console.log(instance);
-
         instance.events.Birth().on('data', function(event){
             console.log(event);
             let owner = event.returnValues.owner;
@@ -18,12 +19,14 @@ $(document).ready(function(){
             let momId = event.returnValues.momId;
             let dadId = event.returnValues.dadId;
             let genes = event.returnValues.genes;
-            $('#creationEvent').css("display", "block");
+            $('#creationEvent').css({"display":"block", "background":"red", "color":"white"});
             $('#creationEvent').text("You created cat: <br>"+"owner: "+ owner 
                                     + " Kitten ID: " + kittenId
                                     +" Mom ID: " + momId
                                     +" Dad ID: "+ dadId
-                                    +" Genes: "+genes)
+                                    +" Genes: "+genes);
+            setTimeout(creationCutOff, 5000);
+
         }
     )
     .on('error', console.error);
