@@ -403,7 +403,6 @@ border-radius: 0 0 60% 60%;
 }
 
 .bottom_buttons{
-    position: absolute;
     display: flex;
     bottom: 10%;
 }
@@ -411,3 +410,8 @@ border-radius: 0 0 60% 60%;
     margin: 5%;
 }
 
+#myCatList{
+    display: flex;
+    background: black;
+    overflow: scroll;
+}

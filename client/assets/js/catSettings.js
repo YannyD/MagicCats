@@ -117,16 +117,16 @@ $('#default_button').click(()=>{
 $('#random_button').click(()=>{
 
   var randomDNA = {
-    "earColor": Math.round(Math.random()*92)+10,
-    "headColor" : Math.round(Math.random()*92)+10,
-    "bodyTopColor" : Math.round(Math.random()*92)+10,
-    "bodyBottomColor" : Math.round(Math.random()*92)+10,
-    "bellyColor" : Math.round(Math.random()*92)+10,
-    "tailBaseColor" : Math.round(Math.random()*92)+10,
-    "tailStripeColor" : Math.round(Math.random()*92)+10,
-    "face" : String(Math.round(Math.random()*5) + 1),
-    "bootySize" : String(Math.round(Math.random()*5) + 1),
-    "animate" :  String(Math.round(Math.random()*3) + 1),
+    "earColor": Math.floor(Math.random()*98)+10,
+    "headColor" : Math.floor(Math.random()*98)+10,
+    "bodyTopColor" : Math.floor(Math.random()*98)+10,
+    "bodyBottomColor" : Math.floor(Math.random()*98)+10,
+    "bellyColor" : Math.floor(Math.random()*98)+10,
+    "tailBaseColor" : Math.floor(Math.random()*98)+10,
+    "tailStripeColor" : Math.floor(Math.random()*98)+10,
+    "face" : String(Math.floor(Math.random()*5) + 1),
+    "bootySize" : String(Math.floor(Math.random()*5) + 1),
+    "animate" :  String(Math.floor(Math.random()*3) + 1),
     }
 
   renderCat(randomDNA);
@@ -145,7 +145,7 @@ function getDna(){
   dna += $('#dnatailstripe').html()
   dna += $('#dnaface').html()
   dna += $('#dnabooty').html()
-  console.log(dna + " is a " + typeof(dna))
+  //we do not pull the animation because the number is too big
   return dna
 }
 
@@ -162,12 +162,109 @@ function kittyCreation(){
   })
 }
 
-function getMyCats(addy){  
-  let catList = instance.methods.getOwnedIds(addy).call({from: addy})
-  .then(function(result){
-    console.log(result);
+
+function generationButton(event,addy){
+  const catDNA = getMyCats(event, addy);
+}
+
+function getMyCats(event,addy){  
+  event.preventDefault();
+  instance.methods.getOwnedIds(addy).call()
+  .then( result => 
+    {
+    let dnaArray = [];
+      for(let i=0; i<result.length; i++){
+        dnaArray.push(generateKittyDNA(result[i]))
+      }
+      Promise.all(dnaArray)
+        .then( finalArray=>
+          {
+            let i = 2;
+            let myDNA =  {
+              "earColor":finalArray[i].substring(0,2),
+              "headColor" : finalArray[i].substring(2,4),
+              "bodyTopColor" : finalArray[i].substring(4,6),
+              "bodyBottomColor" : finalArray[i].substring(6,8),
+              "bellyColor" : finalArray[i].substring(8,10),
+              "tailBaseColor" : finalArray[i].substring(10,12),
+              "tailStripeColor" : finalArray[i].substring(12,14),
+              "face" : finalArray[i].substring(14,16),
+              "bootySize" : finalArray[i].substring(16,18),
+              "animate" :  finalArray[i].substring(18,20),
+              }
+              $("#myCatList").append(addCatBox(i));
+              renderMyCat(i, myDNA);
+    /*        for(let i = 0; i<finalArray.length;i++){
+          myDNA[i] = {
+          "earColor":finalArray[i].substring(0,2),
+          "headColor" : finalArray[i].substring(2,4),
+          "bodyTopColor" : finalArray[i].substring(4,6),
+          "bodyBottomColor" : finalArray[i].substring(6,8),
+          "bellyColor" : finalArray[i].substring(8,10),
+          "tailBaseColor" : finalArray[i].substring(10,12),
+          "tailStripeColor" : finalArray[i].substring(12,14),
+          "face" : finalArray[i].substring(14,16),
+          "bootySize" : finalArray[i].substring(16,18),
+          "animate" :  finalArray[i].substring(18,20),
+          }
+          $("#myCatList").append(addCatBox(i));
+          renderMyCat(i, myDNA[i]);
+        }*/
+          } 
+          
+        )
+    }
+    )
+}
+
+
+//returns an array of promises with tokenIDs
+function generateKittyDNA(tokenID){
+  return instance.methods.getKitty(tokenID).call()
+  .then(result => {
+    return result.genes
   })
+}
+
+
+function renderMyCat(i, dna){
+  $('.right_ear'+i).css('background', '#' + colors[dna.earColor])
+  $('.left_ear'+i).css('background', '#' + colors[dna.earColor])  //This changes the color of the cat
+  $('#dnaear'+i).html(dna.earColor) //This updates the body color part of the DNA that is displayed below the cat
+
+  $('.head'+i).css('background', '#' + colors[dna.headColor])  //This changes the color of the cat
+  $('#dnahead'+i).html(dna.headColor) //This updates the body color part of the DNA that is displayed below the cat
   
-  console.log(catList);
+  $('.catbod_top'+i).css('background', '#' + colors[dna.bodyTopColor])  //This changes the color of the cat
+  $('#dnabodytop'+i).html(dna.bodyTopColor); //This updates the body color part of the DNA that is displayed below the cat
+  
+  $('.catbod_bottom'+i).css('background', '#' + colors[dna.bodyBottomColor])  //This changes the color of the cat
+  $('#dnabodybottom'+i).html(dna.bodyBottomColor) //This updates the body color part of the DNA that is displayed below the cat
+
+  $('.belly'+i).css('background', '#' + colors[dna.bellyColor])  //This changes the color of the cat
+  $('#dnabelly'+i).html(dna.bellyColor) //This updates the body color part of the DNA that is displayed below the cat
+
+  
+  $('.tail1'+i).css('border-bottom-color', '#' + colors[dna.tailBaseColor])  //This changes the color of the cat
+  $('#dnatailbase'+i).html(dna.tailBaseColor) //This updates the body color part of the DNA that is displayed below the cat
+
+  $('.tail2'+i).css('border-bottom-color', '#' + colors[dna.tailStripeColor])  //This changes the color of the cat
+  $('#dnatailstripe'+i).html(dna.tailStripeColor) //This updates the body color part of the DNA that is displayed below the cat
+
+  face(faceStyles[dna.face - 1], i)
+  $('#dnaface'+i).html(dna.face)
+
+  console.log("the booty style is " + bootyStyle[dna.bootySize-1])
+  console.log(bootyStyle)
+  console.log(dna.bootySize)
+
+
+  booty(bootyStyle[dna.bootySize-1], i);
+  $('#dnabooty'+i).html(dna.bootySize)
+
+  const animations = ["none", "tailShake", "headTilt",]
+  animate(animations[dna.animate -1]);
+  $('#dnaanimate'+i).html(dna.animate)
+
 
 }

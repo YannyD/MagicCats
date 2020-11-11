@@ -110,109 +110,114 @@ function faceVariation(num) {
     $('#facecatribute').val(num); //this sets the value of the selection bar
     $('#facebadge').html(faceStyles[num - 1]); //this changes the bage id
 }
-function face(style) {
-    earsCatribute(style);
-    eyesCatribute(style);
-    mouthCatribute(style);
-    whiskersCatribute(style);
+
+function face(style, i="") {
+    earsCatribute(style, i);
+    eyesCatribute(style, i);
+    mouthCatribute(style, i);
+    whiskersCatribute(style, i);
 }
 
-function earsCatribute(style) {
+function earsCatribute(style, i="") {
     switch (style) {
         case "normal":
-            $('.ears').css(earsNormal)
-            $('.left_ear').css(learNormal)
-            $('.right_ear').css(rearNormal)
+            $('.ears'+i).css(earsNormal)
+            $('.left_ear'+i).css(learNormal)
+            $('.right_ear'+i).css(rearNormal)
             break
-        case "sad":
         case "worried":
-            $('.ears').css(earsWorried)
-            $('.left_ear').css(learWorried)
-            $('.right_ear').css(rearWorried)
+            $('.ears'+i).css(earsWorried)
+            $('.left_ear'+i).css(learWorried)
+            $('.right_ear'+i).css(rearWorried)
             break
         case "suspicious":
-            $('.ears').css(earsWorried)
-            $('.left_ear').css(learSuspicious)
-            $('.right_ear').css(rearSuspicious)
+            $('.ears'+i).css(earsWorried)
+            $('.left_ear'+i).css(learSuspicious)
+            $('.right_ear'+i).css(rearSuspicious)
             break
         case "sad":
-            $('.ears').css(earsWorried)
-            $('.left_ear').css(learWorried)
-            $('.right_ear').css(rearWorried)
+            $('.ears'+i).css(earsWorried)
+            $('.left_ear'+i).css(learWorried)
+            $('.right_ear'+i).css(rearWorried)
             break
         case "meowing":
-            $('.ears').css(earsNormal)
-            $('.left_ear').css(learNormal)
-            $('.right_ear').css(rearNormal)
+            $('.ears'+i).css(earsNormal)
+            $('.left_ear'+i).css(learNormal)
+            $('.right_ear'+i).css(rearNormal)
             break
     }
 }
 
-function eyesCatribute(style) {
+function eyesCatribute(style, i="") {
     switch (style) {
         case "normal":
-            $('.reye').css(reyeNormal)
-            $('.leye').css(leyeNormal)
-            $('.liris').css(lirisNormal)
-            $('.riris').css(ririsNormal)
-            $('.rshut, .lshut').css(eyeShutNormal)
+            $('.reye'+i).css(reyeNormal)
+            $('.leye'+i).css(leyeNormal)
+            $('.liris'+i).css(lirisNormal)
+            $('.riris'+i).css(ririsNormal)
+            $('.lshut'+i).css(eyeShutNormal)
+            $('.rshut'+i).css(eyeShutNormal)
+
             break
         case "worried":
-            $('.reye').css(reyeWorried)
-            $('.leye').css(leyeWorried)
-            $('.liris').css(lirisWorried)
-            $('.riris').css(ririsWorried)
-            $('.rshut, .lshut').css(eyeShutNormal)
+            $('.reye'+i).css(reyeWorried)
+            $('.leye'+i).css(leyeWorried)
+            $('.liris'+i).css(lirisWorried)
+            $('.riris'+i).css(ririsWorried)
+            $('.lshut'+i).css(eyeShutNormal)
+            $('.rshut'+i).css(eyeShutNormal)
             break
         case "suspicious":
-            $('.reye').css(reyeSuspicious)
-            $('.leye').css(leyeWorried)
-            $('.liris').css(lirisWorried)
-            $('.riris').css(ririsWorried)
-            $('.rshut, .lshut').css(eyeShutNormal)
+            $('.reye'+i).css(reyeSuspicious)
+            $('.leye'+i).css(leyeWorried)
+            $('.liris'+i).css(lirisWorried)
+            $('.riris'+i).css(ririsWorried)
+            $('.lshut'+i).css(eyeShutNormal)
+            $('.rshut'+i).css(eyeShutNormal)
             break
         case "sad":
-            $('.reye').css(reyeWorried)
-            $('.leye').css(leyeWorried)
-            $('.liris').css(lirisSad)
-            $('.riris').css(ririsSad)
-            $('.rshut, .lshut').css(eyeShutSad)
+            $('.reye'+i).css(reyeWorried)
+            $('.leye'+i).css(leyeWorried)
+            $('.liris'+i).css(lirisSad)
+            $('.riris'+i).css(ririsSad)
+            $('.lshut'+i).css(eyeShutSad)
+            $('.rshut'+i).css(eyeShutSad)
             break
         case "meowing":
-            $('.reye').css(reyeNormal)
-            $('.leye').css(leyeNormal)
-            $('.liris').css(lirisNormal)
-            $('.riris').css(ririsNormal)
-            $('.rshut, .lshut').css(eyeShutNormal)
-    }
+            $('.reye'+i).css(reyeNormal)
+            $('.leye'+i).css(leyeNormal)
+            $('.liris'+i).css(lirisNormal)
+            $('.riris'+i).css(ririsNormal)
+            $('.lshut'+i).css(eyeShutNormal)
+            $('.rshut'+i).css(eyeShutNormal)    }
 }
 
-function mouthCatribute(style) {
+function mouthCatribute(style, i) {
     switch (style) {
         case "normal":
-            $('.mouth').css(mouthNormal)
-            $('.mouth').text("{")
-            $('.bubble').css("display", "none");
+            $('.mouth'+i).css(mouthNormal)
+            $('.mouth'+i).text("{")
+            $('.bubble'+i).css("display", "none");
             break
         case "worried":
-            $('.mouth').css(mouthNormal)
-            $('.mouth').text("{")
-            $('.bubble').css("display", "none");
+            $('.mouth'+i).css(mouthNormal)
+            $('.mouth'+i).text("{")
+            $('.bubble'+i).css("display", "none");
             break
         case "suspicious":
-            $('.mouth').css(mouthSuspicious)
-            $('.mouth').text("{")
-            $('.bubble').css("display", "none");
+            $('.mouth'+i).css(mouthSuspicious)
+            $('.mouth'+i).text("{")
+            $('.bubble'+i).css("display", "none");
             break
         case "sad":
-            $('.mouth').css(mouthNormal)
-            $('.mouth').text("{")
-            $('.bubble').css("display", "none");
+            $('.mouth'+i).css(mouthNormal)
+            $('.mouth'+i).text("{")
+            $('.bubble'+i).css("display", "none");
             break
         case "meowing":
-            $('.mouth').css(mouthMeowing)
-            $('.mouth').text("{}")
-            $('.bubble').css({
+            $('.mouth'+i).css(mouthMeowing)
+            $('.mouth'+i).text("{}")
+            $('.bubble'+i).css({
                 "font-family": "sans-serif",
                 "font-size": "14px",
                 "line-height": "24px",
@@ -224,53 +229,53 @@ function mouthCatribute(style) {
                 "color": "#000",
                 "transform": "translate(160%, 210%)",
                 "display": "block"})
-                $('.bubble').append('<style>.bubble-bottom-left:before{content: ""; width:0px;height: 0px;border-left: 24px solid #fff;border-right: 12px solid transparent;border-top: 12px solid #fff;border-bottom: 20px solid transparent;left: 32px;bottom: -24px;}</style>');
+                $('.bubble'+i).append('<style>.bubble-bottom-left:before{content: ""; width:0px;height: 0px;border-left: 24px solid #fff;border-right: 12px solid transparent;border-top: 12px solid #fff;border-bottom: 20px solid transparent;left: 32px;bottom: -24px;}</style>');
                 break
     }
 }
 
-function whiskersCatribute(style) {
+function whiskersCatribute(style, i) {
     switch (style) {
         case "normal":
-            moveWhiskers("up")
+            moveWhiskers("up", i)
             break
         case "worried":
-            moveWhiskers("middle")
+            moveWhiskers("middle", i)
             break
         case "suspicious":
-            moveWhiskers("middle")
+            moveWhiskers("middle", i)
             break
         case "sad":
-            moveWhiskers("down")
+            moveWhiskers("down", i)
 
     }
 }
 
-function moveWhiskers(style) {
+function moveWhiskers(style, i) {
     switch (style) {
         case "up":
-            $('#whisker1').attr("y1", 60);
-            $('#whisker2').attr("y1", 80);
-            $('#whisker3').attr("y1", 100);
-            $('#whisker4').attr("y2", 60);
-            $('#whisker5').attr("y2", 80);
-            $('#whisker6').attr("y2", 100);
+            $('#whisker1'+i).attr("y1", 60);
+            $('#whisker2'+i).attr("y1", 80);
+            $('#whisker3'+i).attr("y1", 100);
+            $('#whisker4'+i).attr("y2", 60);
+            $('#whisker5'+i).attr("y2", 80);
+            $('#whisker6'+i).attr("y2", 100);
             break
         case "middle":
-            $('#whisker1').attr("y1", 80);
-            $('#whisker2').attr("y1", 100);
-            $('#whisker3').attr("y1", 120);
-            $('#whisker4').attr("y2", 80);
-            $('#whisker5').attr("y2", 100);
-            $('#whisker6').attr("y2", 120);
+            $('#whisker1'+i).attr("y1", 80);
+            $('#whisker2'+i).attr("y1", 100);
+            $('#whisker3'+i).attr("y1", 120);
+            $('#whisker4'+i).attr("y2", 80);
+            $('#whisker5'+i).attr("y2", 100);
+            $('#whisker6'+i).attr("y2", 120);
             break
         case "down":
-            $('#whisker1').attr("y1", 100);
-            $('#whisker2').attr("y1", 120);
-            $('#whisker3').attr("y1", 140);
-            $('#whisker4').attr("y2", 100);
-            $('#whisker5').attr("y2", 120);
-            $('#whisker6').attr("y2", 140);
+            $('#whisker1'+i).attr("y1", 100);
+            $('#whisker2'+i).attr("y1", 120);
+            $('#whisker3'+i).attr("y1", 140);
+            $('#whisker4'+i).attr("y2", 100);
+            $('#whisker5'+i).attr("y2", 120);
+            $('#whisker6'+i).attr("y2", 140);
             break
     }
 }
@@ -288,94 +293,107 @@ function bootySize(num){
     booty(bootyStyle[num-1]);
 }
 
-function booty(style){
+function booty(style, i=""){
+    console.log("we get to booty with style=" + style)
     switch(style){
         case "skinny":
-            $('.catbod_bottom').css({'transform':'translateX(46%)', 'width':'220px'});
-            $('.belly').css({"transform":"translateX(27%)"})
-            $('.tail1, .tail2').css({"transform":"translateY(133%) translateX(40%) rotate(20deg)"})
-            if($(".wagger")[0]){
-                $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+            $('.catbod_bottom'+i).css({'transform':'translateX(46%)', 'width':'220px'});
+            $('.belly'+i).css({"transform":"translateX(27%)"})
+            $('.tail1'+i).css({"transform":"translateY(133%) translateX(40%) rotate(20deg)"})
+            $('.tail2'+i).css({"transform":"translateY(133%) translateX(40%) rotate(20deg)"})
+            if($(".wagger"+i)[0]){
+                $('.tail1'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                $('.tail2'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
                 setAnimation(2);}
             break
         case "slim":
-            $('.catbod_bottom').css({'transform':'translateX(29%)', 'width':'250px'});
-            $('.belly').css({"transform":"translateX(46%)"})
-            $('.tail1, .tail2').css({"transform": "translateY(128%) translateX(31%) rotate(20deg)"})
-            if($(".wagger")[0]){
-                $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+            console.log("we get a slim fit with i=" + i)
+            $('.catbod_bottom'+i).css({'transform':'translateX(29%)', 'width':'250px'});
+            $('.belly'+i).css({"transform":"translateX(46%)"});
+            $('.tail1'+i).css({"transform": "translateY(128%) translateX(31%) rotate(20deg)"});
+            $('.tail2'+i).css({"transform": "translateY(128%) translateX(31%) rotate(20deg)"})
+            if($(".wagger"+i)[0]){
+                $('.tail1'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                $('.tail2'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
                 setAnimation(2);}
             break
         case "fit":
-            $('.catbod_bottom').css({
+            $('.catbod_bottom'+i).css({
                 "height": "300px",
                 "width": "300px",
                 "border-radius": "50% 30% 30% 50%",
                 "background-color": "rgb(170, 114, 9)",
                 "position": "absolute",
                 "transform":"translateX(15%)"});
-            $('.belly').css({           
+            $('.belly'+i).css({           
                 "height":"185px",
                 "width":"155px",
                 "background-color": "white",
                 "border-radius": "80%",
                 "transform": "translateX(68%) translateY(35%)"})
-            $('.tail1, .tail2').css({
+            $('.tail1'+i).css({
                 "transform": "translateY(128%) translateX(25%) rotate(20deg)"})
-                if($(".wagger")[0]){
-                    $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+            $('.tail2'+i).css({
+                "transform": "translateY(128%) translateX(25%) rotate(20deg)"})
+                if($(".wagger"+i)[0]){
+                    $('.tail1'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                    $('.tail2'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
                     setAnimation(2);}
             break
         case "slouch":
-            $('.catbod_bottom').css({
+            $('.catbod_bottom'+i).css({
                 "height": "300px",
                 "width": "350px",
                 "border-radius": "50% 30% 30% 50%",
                 "background-color": "rgb(170, 114, 9)",
                 "position": "absolute",
             "transform":"translateX(0)"});
-            $('.belly').css({           
+            $('.belly'+i).css({           
                 "height":"185px",
                 "width":"155px",
                 "background-color": "white",
                 "border-radius": "80%",
                 "transform": "translateX(93%) translateY(35%)"})
-            $('.tail1, .tail2').css({
+            $('.tail1'+i).css({
                 "transform": "translateY(125%) translateX(10%) rotate(20deg)"})
-                if($(".wagger")[0]){
-                    $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+            $('.tail2'+i).css({
+                "transform": "translateY(125%) translateX(10%) rotate(20deg)"})
+                if($(".wagger"+i)[0]){
+                    $('.tail1'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                    $('.tail2'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
                     setAnimation(2);}
             break
         case "fatty":
-            $('.catbod_top').css({
+            $('.catbod_top'+i).css({
                 "width":"250px",
                 "transform":"translateX(38%) translateY(-33%)"
             })
-            $('.catbod_bottom').css({
+            $('.catbod_bottom'+i).css({
                 "height": "300px",
                 "width": "400px",
                 "border-radius": "50%",
                 "background-color": "rgb(170, 114, 9)",
                 "position": "absolute",
                 "transform":"translateX(3%)"});
-            $('.belly').css({           
+            $('.belly'+i).css({           
                 "height":"185px",
                 "width":"155px",
                 "background-color": "white",
                 "border-radius": "80%",
                 "transform": "translateX(86%) translateY(35%)"})
-            $('.tail1, .tail2').css({
+            $('.tail1'+i).css({
                 "transform": "translateY(125%) translateX(15%) rotate(20deg)"})
-                if($(".wagger")[0]){
-                    $('.tail1, .tail2').removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+            $('.tail2'+i).css({
+                "transform": "translateY(125%) translateX(15%) rotate(20deg)"})
+                if($(".wagger"+i)[0]){
+                    $('.tail1'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
+                    $('.tail2'+i).removeClass("skinnyWaggingTail slimWaggingTail waggingTail slouchWaggingTail fattyWaggingTail");
                     setAnimation(2);}
             break
     }
 }
 
-
 const animations = ["none", "tailShake", "headTilt",]
-
 function setAnimation(num){
     if(num.length==1){
         $('#dnaanimation').html("0" + num)
@@ -384,6 +402,7 @@ function setAnimation(num){
     animate(animations[num-1]);
     $('#animationid').val(num);
     $('#animationbadge').html(animations[num-1]);
+    $('#dnaanimate').html("0" + num)
 }
 
 function animate(style){
@@ -406,7 +425,6 @@ function animate(style){
                 $('.tail1, .tail2').addClass("slouchWaggingTail wagger");
             } 
             else if($('#bootycatribute').val() ==5){
-                console.log($('#bootycatribute').val());
                 $('.tail1, .tail2').addClass("fattyWaggingTail wagger");
             }        
             $('.head').removeClass("tiltingHead");
@@ -417,4 +435,3 @@ function animate(style){
         break
     }
 }
-

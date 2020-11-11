@@ -50,6 +50,7 @@ contract Kittycontract is IERC721, Ownable{
     return newKittenId;
     }
 
+
     function transfer(address to, uint256 tokenId) external{
         require(to != address(0), "Don't send your token into the endless abyss");
         require(to != address(this), "Don't send your token to this address");

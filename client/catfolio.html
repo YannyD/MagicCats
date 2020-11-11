@@ -13,6 +13,7 @@
         <script src="assets/js/web3.min.js" ></script>
         <script src="./index.js" ></script>
         <script src="./abi.js" ></script>
+        <script src= "cat_code.js"></script>
     
         <!--Do we need the integrity/ crossorigin stuff in the script?-->
     
@@ -45,17 +46,18 @@
                 <h1>See all your cats</h1>
             </div>
             <div class="col-md-3">
-                <form>
+                <form onsubmit="generationButton(event, document.getElementById('myAddy').value)">
                     <label for="myAddy">What's your address?</label><br>
                     <input type="text" id="myAddy" name="myAddy" placeholder="enter addy here"><br>
-                    <input type="submit" value="Submit" onclick="getMyCats(document.getElementById('myAddy').value)" />
+                    <input type="submit" value="Submit" />
                 </form>
 
             </div>
         </div>
-        <div id="all_cats" class="cat_boxes"></div>
-        
+        <div id="myCatList">
+
         </div>
+        
     </body>
     <script src="./index.js" ></script>
     <script src="assets/js/colors.js"></script>
