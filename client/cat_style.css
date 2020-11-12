@@ -413,5 +413,8 @@ border-radius: 0 0 60% 60%;
 #myCatList{
     display: flex;
     background: black;
-    overflow: scroll;
+    max-width: 97vw;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
 }

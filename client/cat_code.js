@@ -2,7 +2,7 @@ function addCatBox(i){
 const oneCat = `
 <div class="col-lg-4 catBox m-2 light-b-shadow">
     <div class="canvas">
-        <div class="bubble` + i + ` bubble-bottom-left">Meooooow!</div>
+        <div class="bubble bubble` + i + ` bubble-bottom-left">Meooooow!</div>
         <div class="ears ears` + i + `">
             <div class="left_ear left_ear` + i + `">
                 <div class="inner_left_ear"></div>
@@ -60,7 +60,7 @@ const oneCat = `
                 </svg>
             </div>
             <div class="snout">T
-                <div class="mouth">{</div>
+                <div class="mouth mouth` + i + `">{</div>
             </div>
         </div>
         <div class="catbod">

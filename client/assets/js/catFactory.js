@@ -215,6 +215,7 @@ function mouthCatribute(style, i) {
             $('.bubble'+i).css("display", "none");
             break
         case "meowing":
+            console.log("we got to meowing")
             $('.mouth'+i).css(mouthMeowing)
             $('.mouth'+i).text("{}")
             $('.bubble'+i).css({
@@ -294,7 +295,6 @@ function bootySize(num){
 }
 
 function booty(style, i=""){
-    console.log("we get to booty with style=" + style)
     switch(style){
         case "skinny":
             $('.catbod_bottom'+i).css({'transform':'translateX(46%)', 'width':'220px'});
@@ -307,7 +307,6 @@ function booty(style, i=""){
                 setAnimation(2);}
             break
         case "slim":
-            console.log("we get a slim fit with i=" + i)
             $('.catbod_bottom'+i).css({'transform':'translateX(29%)', 'width':'250px'});
             $('.belly'+i).css({"transform":"translateX(46%)"});
             $('.tail1'+i).css({"transform": "translateY(128%) translateX(31%) rotate(20deg)"});

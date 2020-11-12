@@ -179,22 +179,8 @@ function getMyCats(event,addy){
       Promise.all(dnaArray)
         .then( finalArray=>
           {
-            let i = 2;
-            let myDNA =  {
-              "earColor":finalArray[i].substring(0,2),
-              "headColor" : finalArray[i].substring(2,4),
-              "bodyTopColor" : finalArray[i].substring(4,6),
-              "bodyBottomColor" : finalArray[i].substring(6,8),
-              "bellyColor" : finalArray[i].substring(8,10),
-              "tailBaseColor" : finalArray[i].substring(10,12),
-              "tailStripeColor" : finalArray[i].substring(12,14),
-              "face" : finalArray[i].substring(14,16),
-              "bootySize" : finalArray[i].substring(16,18),
-              "animate" :  finalArray[i].substring(18,20),
-              }
-              $("#myCatList").append(addCatBox(i));
-              renderMyCat(i, myDNA);
-    /*        for(let i = 0; i<finalArray.length;i++){
+        for(let i = 0; i<finalArray.length;i++){
+          let myDNA = []
           myDNA[i] = {
           "earColor":finalArray[i].substring(0,2),
           "headColor" : finalArray[i].substring(2,4),
@@ -208,10 +194,10 @@ function getMyCats(event,addy){
           "animate" :  finalArray[i].substring(18,20),
           }
           $("#myCatList").append(addCatBox(i));
+          console.log(myDNA)
           renderMyCat(i, myDNA[i]);
-        }*/
+        }
           } 
-          
         )
     }
     )
@@ -253,11 +239,6 @@ function renderMyCat(i, dna){
 
   face(faceStyles[dna.face - 1], i)
   $('#dnaface'+i).html(dna.face)
-
-  console.log("the booty style is " + bootyStyle[dna.bootySize-1])
-  console.log(bootyStyle)
-  console.log(dna.bootySize)
-
 
   booty(bootyStyle[dna.bootySize-1], i);
   $('#dnabooty'+i).html(dna.bootySize)
