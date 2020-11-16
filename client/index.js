@@ -1,7 +1,7 @@
 var web3 = new Web3(Web3.givenProvider);        //argument should be ethereum node url, but we use meta mask
 var instance;
 var user;
-var contractAddress = "0xf9aC991Be6f1Bc18071A3D3625e4cD5CE9Ea1013";
+var contractAddress = "0xA6fF5daBdabb2335d97ae69D7f04cE9a15Fdf48C";
 
 function creationCutOff(){
   $('#creationEvent').css("display", "none");
@@ -11,6 +11,7 @@ $(document).ready(function(){
   //ask user to enable metamask and then call a function with metamask accounts
     window.ethereum.enable().then(function(accounts){
         instance = new web3.eth.Contract(abi, contractAddress, {from: accounts[0]})
+        console.log(instance);
         user = accounts[0];
         instance.events.Birth().on('data', function(event){
             console.log(event);

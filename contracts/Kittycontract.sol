@@ -19,12 +19,14 @@ contract Kittycontract is IERC721, Ownable{
     string private constant _symbol = "KTC";
     uint256 public gen0Counter;
     bytes4 internal constant MAGIC_ERC721_RECEIVED = bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
+    
+    //kitty gender?
     struct Kitty{
-    uint256 genes;
-    uint256 birthTime;
-    uint256 dadID;
-    uint256 momID;
-    uint256 generation;
+        uint256 genes;
+        uint256 birthTime;
+        uint256 dadID;
+        uint256 momID;
+        uint256 generation;
     }
     
     Kitty[] public kitties;    //is this set as private by default if I don't use public?
@@ -39,7 +41,6 @@ contract Kittycontract is IERC721, Ownable{
 
     function supportsInterface(bytes4 _interfaceId) external view returns(bool){
         return (_interfaceId == _INTERFACE_ID_ERC721 || _interfaceId ==_INTERFACE_ID_ERC165);
-
     }
 
     function _isApprovedOrOwner(address _spender, address _from, address _to, uint256 _tokenId) internal view returns(bool){
@@ -59,13 +60,15 @@ contract Kittycontract is IERC721, Ownable{
         _transfer(_from, _to, _tokenId);
    }
 
-    function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes memory _data) internal{
+    function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes calldata _data) external{
         require(_isApprovedOrOwner(msg.sender, _from, _to, _tokenId));
         _safeTransfer(_from, _to, _tokenId, _data);
     }
 
     function safeTransferFrom(address _from, address _to, uint256 _tokenId) external{
-        safeTransferFrom(_from, _to, _tokenId, "");
+        require(_isApprovedOrOwner(msg.sender, _from, _to, _tokenId));
+        _safeTransfer(_from, _to, _tokenId, "");
+
     }
 
 
@@ -178,6 +181,15 @@ contract Kittycontract is IERC721, Ownable{
         balance = _ownersTokenBalance[owner];
     }
 
+
+
+    function breed(uint256 _dadId, uint256 _momId) public returns(uint256){
+        require(_owns(msg.sender, _dadId)&&_owns(msg.sender, _momId), "You have no right to force breed these cats!");
+        uint256 newDNA = _mixDNA(_dadId, _momId);
+        uint256 generation = kitties[_momId].generation+1;
+        _createKitty(_momId, _dadId, generation, newDNA, msg.sender);
+    }
+
     function _createKitty(uint256 _momID, uint256 _dadID, uint256 _generation, uint256 _genes, address _owner) internal 
     returns(uint256){
     Kitty memory _kitty = Kitty({
@@ -209,8 +221,6 @@ contract Kittycontract is IERC721, Ownable{
         return kittyIndexApproved[_tokenId] == _claimant;
     }
 
- 
-
     function _checkERC721Support(address _from, address _to, uint256 _tokenId, bytes memory _data) internal returns(bool){
         if(!_isContract(_to)){
             return true;
@@ -227,7 +237,41 @@ contract Kittycontract is IERC721, Ownable{
             size:=extcodesize(_to)
         }
         return size>0;
-    
     }
 
+    function _mixDNA(uint _dadDna, uint _momDna) public view returns(uint256){
+        uint randGenerator = block.timestamp;
+        uint newDNA;
+        for(uint i = 0; i<9; i++){
+            randGenerator /=(10**i);
+            uint randDigit = randGenerator%10;
+            
+            if(i==0){
+                if(randDigit%2 ==0) {
+                    uint addedDna = (_dadDna/(10**(16-(2*i))));
+                    newDNA += addedDna *(10**(16-(2*i)));
+                }
+                else {
+                    uint addedDna = (_momDna/(10**(16-(2*i))));
+                    newDNA += addedDna*(10**(16-(2*i)));
+                }
+            }
+            else{
+                if(randDigit%2 ==0){
+                    uint addedDna = _dadDna/(10**(16-(2*i)));
+                    addedDna *= (10**(16-(2*i)));
+                    addedDna -= _dadDna/(10**(18-(2*i)))*(10**(18-(2*i)));
+                    newDNA +=addedDna;
+                }
+                else{
+                    uint addedDna =_momDna/(10**(16-(2*i)));
+                    addedDna *= (10**(16-(2*i)));
+                    addedDna -=(_momDna/(10**(18-(2*i)))) * (10**(18-(2*i)));
+                    newDNA += addedDna;
+                }
+            }
+        }
+        return newDNA;
+    }
 }
+

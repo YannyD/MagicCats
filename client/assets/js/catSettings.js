@@ -117,18 +117,17 @@ $('#default_button').click(()=>{
 $('#random_button').click(()=>{
 
   var randomDNA = {
-    "earColor": Math.floor(Math.random()*98)+10,
-    "headColor" : Math.floor(Math.random()*98)+10,
-    "bodyTopColor" : Math.floor(Math.random()*98)+10,
-    "bodyBottomColor" : Math.floor(Math.random()*98)+10,
-    "bellyColor" : Math.floor(Math.random()*98)+10,
-    "tailBaseColor" : Math.floor(Math.random()*98)+10,
-    "tailStripeColor" : Math.floor(Math.random()*98)+10,
-    "face" : String(Math.floor(Math.random()*5) + 1),
-    "bootySize" : String(Math.floor(Math.random()*5) + 1),
-    "animate" :  String(Math.floor(Math.random()*3) + 1),
-    }
-
+    "earColor": Math.floor(Math.random()*(89))+10,
+    "headColor" : Math.floor(Math.random()*(89))+10,
+    "bodyTopColor" : Math.floor(Math.random()*(89))+10,
+    "bodyBottomColor" : Math.floor(Math.random()*(89))+10,
+    "bellyColor" : Math.floor(Math.random()*(89))+10,
+    "tailBaseColor" : Math.floor(Math.random()*(89))+10,
+    "tailStripeColor" : Math.floor(Math.random()*(89))+10,
+    "face" : String(Math.floor(Math.random()*(5) + 1)),
+    "bootySize" : String(Math.floor(Math.random()*(5) + 1)),
+    "animate" :  String(Math.floor(Math.random()*(3) + 1)),
+    } 
   renderCat(randomDNA);
 })
 
@@ -162,6 +161,99 @@ function kittyCreation(){
   })
 }
 
+//breeding funct
+function babyMaker(momDna, dadDna){
+  instance.methods.breed(momDna, dadDna).send({}, function(error, txHash){
+    if(error) console.log(error)
+    else {
+      console.log(txHash);
+      alert("You birthed a new kitty!");
+    }
+  })}
+
+function selectionButton(event,addy){
+  const catSelection = getSelection(event, addy);
+}
+
+function getSelection(event,addy){  
+  event.preventDefault();
+  instance.methods.getOwnedIds(addy).call()
+  .then( result => 
+    {
+    let dnaArray = [];
+      for(let i=0; i<result.length; i++){
+        dnaArray.push(generateKittyDNA(result[i]))
+      }
+      Promise.all(dnaArray)
+        .then( finalArray=>
+          {
+        for(let i = 0; i<finalArray.length;i++){
+          let myDNA = []
+          myDNA[i] = {
+          "earColor":finalArray[i].substring(0,2),
+          "headColor" : finalArray[i].substring(2,4),
+          "bodyTopColor" : finalArray[i].substring(4,6),
+          "bodyBottomColor" : finalArray[i].substring(6,8),
+          "bellyColor" : finalArray[i].substring(8,10),
+          "tailBaseColor" : finalArray[i].substring(10,12),
+          "tailStripeColor" : finalArray[i].substring(12,14),
+          "face" : finalArray[i].substring(14,16),
+          "bootySize" : finalArray[i].substring(16,18),
+          "animate" :  finalArray[i].substring(18,20),
+          }
+          $("#selection-box1").append(addBreedBox1(i));
+          $("#selection-box2").append(addBreedBox2(i));
+          renderMyCat(i, myDNA[i]);
+        }
+          } 
+        )
+    }
+    )
+}
+var momsDNA = -1;
+var dadsDNA = -1;
+
+function breed1(i){
+    $('.selection1').css("display", "none");
+    momsDNA = 
+    $("#dnaear"+i).text()+
+    $("#dnahead"+i).text()+
+    $("#dnabodytop"+i).text()+
+    $("#dnabodybottom"+i).text()+
+    $("#dnabelly"+i).text()+
+    $("#dnatailbase"+i).text()+
+    $("#dnatailstripe"+i).text()+
+    $("#dnaface"+i).text()+
+    $("#dnabooty"+i).text()+
+    $("#dnaanimate"+i).text();
+
+    if(dadsDNA!=-1){
+      babyMaker(momsDNA, dadsDNA);
+      momsDNA = -1;
+      dadsDNA = -1;
+    }
+}
+
+function breed2(i){
+  $('.selection2').css("display", "none");
+    dadsDNA = 
+    $("#dnaear"+i).text()+
+    $("#dnahead"+i).text()+
+    $("#dnabodytop"+i).text()+
+    $("#dnabodybottom"+i).text()+
+    $("#dnabelly"+i).text()+
+    $("#dnatailbase"+i).text()+
+    $("#dnatailstripe"+i).text()+
+    $("#dnaface"+i).text()+
+    $("#dnabooty"+i).text()+
+    $("#dnaanimate"+i).text();
+
+    if(momsDNA!=-1){
+      babyMaker(momsDNA, dadsDNA);
+      momsDNA = -1;
+      dadsDNA = -1;
+    }
+}
 
 function generationButton(event,addy){
   const catDNA = getMyCats(event, addy);
@@ -194,7 +286,6 @@ function getMyCats(event,addy){
           "animate" :  finalArray[i].substring(18,20),
           }
           $("#myCatList").append(addCatBox(i));
-          console.log(myDNA)
           renderMyCat(i, myDNA[i]);
         }
           } 
@@ -246,6 +337,4 @@ function renderMyCat(i, dna){
   const animations = ["none", "tailShake", "headTilt",]
   animate(animations[dna.animate -1]);
   $('#dnaanimate'+i).html(dna.animate)
-
-
 }

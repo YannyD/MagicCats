@@ -413,8 +413,45 @@ border-radius: 0 0 60% 60%;
 #myCatList{
     display: flex;
     background: black;
-    max-width: 97vw;
+    max-width: 100vw;
     padding: 5px;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.selection1{
+    width: 100vw;
+    height: 75vh;
+    overflow: scroll;
+    background: black;
+}
+
+.selection2{
+    width: 100vw;
+    height: 75vh;
+    overflow: scroll;
+    background: black;
+}
+
+#selection-box1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#selection-box2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.back_canvas{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.genbut{
+    top: 10%;
+    left: 10%;
+    position: absolute;
 }

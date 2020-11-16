@@ -215,7 +215,6 @@ function mouthCatribute(style, i) {
             $('.bubble'+i).css("display", "none");
             break
         case "meowing":
-            console.log("we got to meowing")
             $('.mouth'+i).css(mouthMeowing)
             $('.mouth'+i).text("{}")
             $('.bubble'+i).css({
