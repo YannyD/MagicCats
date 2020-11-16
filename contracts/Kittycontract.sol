@@ -181,11 +181,9 @@ contract Kittycontract is IERC721, Ownable{
         balance = _ownersTokenBalance[owner];
     }
 
-
-
     function breed(uint256 _dadId, uint256 _momId) public returns(uint256){
         require(_owns(msg.sender, _dadId)&&_owns(msg.sender, _momId), "You have no right to force breed these cats!");
-        uint256 newDNA = _mixDNA(_dadId, _momId);
+        uint256 newDNA = _mixDNA(kitties[_dadId].genes, kitties[_momId].genes);
         uint256 generation = kitties[_momId].generation+1;
         _createKitty(_momId, _dadId, generation, newDNA, msg.sender);
     }

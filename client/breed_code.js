@@ -187,18 +187,18 @@ function addBreedBox2(i) {
                                 <b>
                                     DNA:
                                     <!-- Colors -->
-                                    <span id="dnaear` + i + `"></span>
-                                    <span id="dnahead` + i + `"></span>
-                                    <span id="dnabodytop` + i + `"></span>
-                                    <span id="dnabodybottom` + i + `"></span>
-                                    <span id="dnabelly` + i + `"></span>
-                                    <span id="dnatailbase` + i + `"></span>
-                                    <span id="dnatailstripe` + i + `"></span>
+                                    <span id="dnaear` + i + i + `"></span>
+                                    <span id="dnahead` + i + i + `"></span>
+                                    <span id="dnabodytop` + i + i + `"></span>
+                                    <span id="dnabodybottom` + i + i + `"></span>
+                                    <span id="dnabelly` + i + i + `"></span>
+                                    <span id="dnatailbase` + i + i + `"></span>
+                                    <span id="dnatailstripe` + i + i + `"></span>
                         
                                     <!-- Cattributes -->
-                                    <span id="dnaface` + i + `"></span>
-                                    <span id="dnabooty` + i + `"></span>
-                                    <span id="dnaanimate` + i + `"></span>
+                                    <span id="dnaface` + i + i + `"></span>
+                                    <span id="dnabooty` + i + i + `"></span>
+                                    <span id="dnaanimate` + i + i + `"></span>
                                 </b>
                             </div>
                         </div>

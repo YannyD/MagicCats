@@ -1,7 +1,7 @@
 var web3 = new Web3(Web3.givenProvider);        //argument should be ethereum node url, but we use meta mask
 var instance;
 var user;
-var contractAddress = "0xA6fF5daBdabb2335d97ae69D7f04cE9a15Fdf48C";
+var contractAddress = "0x1bF25f21fB79ea059E84FEea620A1AaB34460ca8";
 
 function creationCutOff(){
   $('#creationEvent').css("display", "none");
