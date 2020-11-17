@@ -239,8 +239,18 @@ contract Kittycontract is IERC721, Ownable{
 
     function _mixDNA(uint _dadDna, uint _momDna) public view returns(uint256){
         uint randGenerator = block.timestamp;
+        uint fullRand = randGenerator%8;
         uint newDNA;
         for(uint i = 0; i<9; i++){
+            if(i==fullRand&&fullRand<7){
+                uint addedDna =((randGenerator%89+10)*(10**(16-(2*i))));
+                newDNA += addedDna;
+            }
+            else if (i==fullRand&&fullRand>6){
+                uint addedDna =((randGenerator%5+1)*(10**(16-(2*i))));
+                newDNA += addedDna;
+            }
+            else{
             randGenerator /=(10**i);
             uint randDigit = randGenerator%10;
             
@@ -269,7 +279,7 @@ contract Kittycontract is IERC721, Ownable{
                 }
             }
         }
+        }
         return newDNA;
     }
 }
-
