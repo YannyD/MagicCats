@@ -1,4 +1,3 @@
-
 var colors = Object.values(allColors())
 
 var defaultDNA = {

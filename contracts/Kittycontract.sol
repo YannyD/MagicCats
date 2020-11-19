@@ -10,7 +10,6 @@ contract Kittycontract is IERC721, Ownable{
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
 
-    //do I need to include an IERC165 in the "is" portion of the contract title?
     bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
     bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
 
@@ -39,6 +38,11 @@ contract Kittycontract is IERC721, Ownable{
     //approval for all the tokens owned by an address
     mapping(address =>mapping(address=>bool)) private _operatorApprovals;  //first input is the token owner's address
 
+
+
+    constructor() public{
+        _createKitty(0,0,0,uint(-1), address(0));
+    }
     function supportsInterface(bytes4 _interfaceId) external view returns(bool){
         return (_interfaceId == _INTERFACE_ID_ERC721 || _interfaceId ==_INTERFACE_ID_ERC165);
     }
@@ -182,6 +186,7 @@ contract Kittycontract is IERC721, Ownable{
     }
 
     function breed(uint256 _dadId, uint256 _momId) public returns(uint256){
+        require(_dadId!=_momId, "That's not how it works. Consult a science textbook");
         require(_owns(msg.sender, _dadId)&&_owns(msg.sender, _momId), "You have no right to force breed these cats!");
         uint256 newDNA = _mixDNA(kitties[_dadId].genes, kitties[_momId].genes);
         uint256 generation = kitties[_momId].generation+1;
@@ -237,7 +242,7 @@ contract Kittycontract is IERC721, Ownable{
         return size>0;
     }
 
-    function _mixDNA(uint _dadDna, uint _momDna) public view returns(uint256){
+    function _mixDNA(uint _dadDna, uint _momDna) internal view returns(uint256){
         uint randGenerator = block.timestamp;
         uint fullRand = randGenerator%8;
         uint newDNA;
