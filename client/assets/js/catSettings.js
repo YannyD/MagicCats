@@ -159,6 +159,7 @@ function kittyCreation(){
     }
   })
 }
+101010101010100101, 989898989898980505
 
 //breeding function
 function babyMaker(momsID, dadsID){
@@ -212,6 +213,12 @@ function babyMaker(momsID, dadsID){
     instance.methods.getOwnedIds(addy).call()
     .then( result => 
       {
+      for(let i=0; i<result.length;i++){
+        if(i+1==j){}
+        else{
+        $("#selection-box1").append(addBreedBox1(result[i]));
+        $("#selection-box2").append(addBreedBox2(result[i]));}
+      }
       let dnaArray = [];
         for(let i=0; i<result.length; i++){
           dnaArray.push(generateKittyDNA(result[i]))
@@ -220,10 +227,9 @@ function babyMaker(momsID, dadsID){
           .then( finalArray=>
             {
           for(let i = 0; i<finalArray.length;i++){
-            if(i==j){}
+            if(i+1==j){}
             else{
-            let myDNA = []
-            myDNA[i] = {
+            let myDNA  = {
             "earColor":finalArray[i].substring(0,2),
             "headColor" : finalArray[i].substring(2,4),
             "bodyTopColor" : finalArray[i].substring(4,6),
@@ -235,10 +241,9 @@ function babyMaker(momsID, dadsID){
             "bootySize" : finalArray[i].substring(16,18),
             "animate" :  finalArray[i].substring(18,20),
             }
-            $("#selection-box1").append(addBreedBox1(i));
-            $("#selection-box2").append(addBreedBox2(i));
-            renderMyCat(i, myDNA[i]);
-            renderMyCat2(i, myDNA[i]);
+            
+            renderMyCat(result[i], myDNA);
+            renderMyCat2(result[i], myDNA);
           }}
             } 
           )
@@ -256,6 +261,10 @@ function getSelection(event,addy){
   instance.methods.getOwnedIds(addy).call()
   .then( result => 
     {
+      for(let i =0; i<result.length;i++){
+        $("#selection-box1").append(addBreedBox1(result[i]));
+        $("#selection-box2").append(addBreedBox2(result[i]));
+      }
     let dnaArray = [];
       for(let i=0; i<result.length; i++){
         dnaArray.push(generateKittyDNA(result[i]))
@@ -264,8 +273,7 @@ function getSelection(event,addy){
         .then( finalArray=>
           {
         for(let i = 0; i<finalArray.length;i++){
-          let myDNA = []
-          myDNA[i] = {
+          let myDNA = {
           "earColor":finalArray[i].substring(0,2),
           "headColor" : finalArray[i].substring(2,4),
           "bodyTopColor" : finalArray[i].substring(4,6),
@@ -277,9 +285,8 @@ function getSelection(event,addy){
           "bootySize" : finalArray[i].substring(16,18),
           "animate" :  finalArray[i].substring(18,20),
           }
-          $("#selection-box1").append(addBreedBox1(i));
-          $("#selection-box2").append(addBreedBox2(i));
-          renderMyCat(i, myDNA[i]);
+          renderMyCat(result[i], myDNA);
+          renderMyCat2(result[i], myDNA);
         }
           } 
         )
@@ -363,7 +370,6 @@ function renderMyCat(i, dna){
   $('.right_ear'+i).css('background', '#' + colors[dna.earColor])
   $('.left_ear'+i).css('background', '#' + colors[dna.earColor])  //This changes the color of the cat
   $("#dnaear"+i).html(dna.earColor) //This updates the body color part of the DNA that is displayed below the cat
-
   $('.head'+i).css('background', '#' + colors[dna.headColor])  //This changes the color of the cat
   $("#dnahead"+i).html(dna.headColor) //This updates the body color part of the DNA that is displayed below the cat
   
@@ -397,7 +403,7 @@ function renderNewCat(dna){
   $('.right_ear').css('background', '#' + colors[dna.earColor])
   $('.left_ear').css('background', '#' + colors[dna.earColor])  //This changes the color of the cat
   $("#dnaear").html(dna.earColor) //This updates the body color part of the DNA that is displayed below the cat
-
+  
   $('.head').css('background', '#' + colors[dna.headColor])  //This changes the color of the cat
   $("#dnahead").html(dna.headColor) //This updates the body color part of the DNA that is displayed below the cat
   

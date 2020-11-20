@@ -248,11 +248,11 @@ contract Kittycontract is IERC721, Ownable{
         uint newDNA;
         for(uint i = 0; i<9; i++){
             if(i==fullRand&&fullRand<7){
-                uint addedDna =((randGenerator%89+10)*(10**(16-(2*i))));
+                uint addedDna =((block.timestamp%89+10)*(10**(16-(2*i))));
                 newDNA += addedDna;
             }
             else if (i==fullRand&&fullRand>6){
-                uint addedDna =((randGenerator%5+1)*(10**(16-(2*i))));
+                uint addedDna =((block.timestamp%5+1)*(10**(16-(2*i))));
                 newDNA += addedDna;
             }
             else{

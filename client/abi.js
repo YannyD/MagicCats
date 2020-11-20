@@ -1,4 +1,10 @@
-var abi =[
+var abi = [
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -610,32 +616,6 @@ var abi =[
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_dadDna",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_momDna",
-        "type": "uint256"
-      }
-    ],
-    "name": "_mixDNA",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
     "type": "function"
   }
 ]
