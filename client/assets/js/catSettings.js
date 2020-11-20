@@ -159,7 +159,6 @@ function kittyCreation(){
     }
   })
 }
-101010101010100101, 989898989898980505
 
 //breeding function
 function babyMaker(momsID, dadsID){
