@@ -250,13 +250,8 @@ function babyMaker(momsID, dadsID){
       )
   }
 
-
-function selectionButton(event,addy){
-  const catSelection = getSelection(event, addy);
-}
-
-function getSelection(event,addy){  
-  event.preventDefault();
+function getSelection(addy){  
+  console.log("we called it...")
   instance.methods.getOwnedIds(addy).call()
   .then( result => 
     {
@@ -317,12 +312,7 @@ function breed2(i){
     }
 }
 
-function generationButton(event,addy){
-  const catDNA = getMyCats(event, addy);
-}
-
-function getMyCats(event,addy){  
-  event.preventDefault();
+function getMyCats(addy){  
   instance.methods.getOwnedIds(addy).call()
   .then( result => 
     {
