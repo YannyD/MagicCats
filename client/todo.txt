@@ -1,0 +1,9 @@
+Smart Contract changes
+
+Kittycontract:
+-	 Approve needs to unapproved also
+Kittymarketplace:
+-	getAllTokenOnSale can change name and should not return inactive offers
+
+Questions:
+How do we deal with transaction wait time in live applications?  We instruct the user to a waiting screen and notify them when the event is heard somehow?

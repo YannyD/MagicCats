@@ -1,9 +1,3 @@
-var web3 = new Web3(Web3.givenProvider);        //argument should be ethereum node url, but we use meta mask
-
-var instance;
-var user;
-var contractAddress = "0x04B0bF3b4f88196745de08710dC278fA37052080";
-
 function creationCutOff(){
   $('#creationEvent').css("display", "none");
 }
@@ -35,37 +29,15 @@ $(document).ready(function(){
     )
     .on('error', console.error);
 })
-
-//we should put each of these ifs in separate js files and just upload different files for each page, right?
-    if($('#myCatList')!=0){
-      web3.eth.getAccounts((error, accounts) => {
-        //what is the right place to output an error?  In a try catch or something?
-        getMyCats(accounts[0]);
-      })
-    }
-    //why does this break if I use else if?
-    if($('#selection-box1')!=0){
-      web3.eth.getAccounts((error, accounts) => {
-        getSelection(accounts[0]);
-      })
-    }
-
-    ethereum.on('accountsChanged', function (accounts) {
-      
-      if($('#myCatList')!=0){
-        $('#myCatList').empty();
-        web3.eth.getAccounts((error, accounts) => {
-          getMyCats(accounts[0]);
-        })
-      }
-      if($('#selection-box1')!=0){
-        $('#selection-box1').empty();
-        $('#selection-box2').empty();
-        web3.eth.getAccounts((error, accounts) => {
-          getSelection(accounts[0]);
-        })
-      }
-    })
-    
-
 })
+
+function kittyCreation(){
+  let dna = getDna();
+  instance.methods.createKittyGen0(dna).send({}, function(error, txHash){
+    if(error) console.log(error)
+    else {
+      console.log(txHash);
+      alert("You birthed a new kitty!");
+    }
+  })
+}
